@@ -103,8 +103,10 @@ def ts3(market_ticker, stock_ticker):  # table from strategy 1
                         and gf_copy.iloc[ind[i] - 2, 4] > 5 and gf_copy.iloc[ind[i] - 2, 4] < 15 \
                         and gf_copy.iloc[ind[i] - 3, 4] > 0 and gf_copy.iloc[ind[i] - 3, 4] < 25 \
                         and gf_copy.iloc[ind[i] - 4, 4] > 0 and gf_copy.iloc[ind[i] - 4, 4] < 20 \
-                        and gf_copy.iloc[ind[i] - 5, 4] < 20:
-                    """ add new column of day to day values """
+                        and gf_copy.iloc[ind[i] - 5, 4] < 20 \
+                        and gf_copy.iloc[ind[i], 3] > 0:
+
+
 
 
                     r[i] = 'Short'  # buy

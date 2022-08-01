@@ -89,46 +89,8 @@ def ts3(market_ticker, stock_ticker):  # table from strategy 1
 
     # print(gf)
 
-    def signal_to_deal(table, ind, tick):
-        """ Long and Short"""
-        gf_copy = table.copy(deep=True)
-        gf_copy = gf_copy.astype({tick: str}, errors='ignore')
-        r = gf_copy[tick].values
-
-        for i in range(len(ind)):
-            try:
-
-                if gf_copy.iloc[ind[i], 4] > 0 and gf_copy.iloc[ind[i], 4] < 2 \
-                        and gf_copy.iloc[ind[i] - 1, 4] > 2.5 and gf_copy.iloc[ind[i] - 1, 4] < 10 \
-                        and gf_copy.iloc[ind[i] - 2, 4] > 5 and gf_copy.iloc[ind[i] - 2, 4] < 15 \
-                        and gf_copy.iloc[ind[i] - 3, 4] > 0 and gf_copy.iloc[ind[i] - 3, 4] < 25 \
-                        and gf_copy.iloc[ind[i] - 4, 4] > 0 and gf_copy.iloc[ind[i] - 4, 4] < 20 \
-                        and gf_copy.iloc[ind[i] - 5, 4] < 20 \
-                        and gf_copy.iloc[ind[i], 3] < 4:
-                    r[i] = 'Short'  # buy
-                    # r[i] = 1  # buy
-                elif gf_copy.iloc[ind[i], 4] < 0 and gf_copy.iloc[ind[i], 4] > -2 \
-                        and gf_copy.iloc[ind[i] - 1, 4] < -2.5 and gf_copy.iloc[ind[i] - 1, 4] > -30 \
-                        and gf_copy.iloc[ind[i] - 2, 4] < 5 and gf_copy.iloc[ind[i] - 2, 4] > -40 \
-                        and gf_copy.iloc[ind[i] - 3, 4] < -1 and gf_copy.iloc[ind[i] - 3, 4] > -30 \
-                        and gf_copy.iloc[ind[i] - 4, 4] < 10 \
-                        and gf_copy.iloc[ind[i], 3] > -10\
-                        and gf_copy.iloc[ind[i]-1, 3] < 20:
-
-                    # and gf_copy.iloc[ind[i] - 5, 4] < 20:
-                    r[i] = 'Long'  # sell
-                    # r[i] = 2
-                else:
-                    r[i] = '0'
-                    # r[i] = 0
-            except:
-                r[i] = '0'
-                # r[i] = 0
-        return r
-
-
     # def signal_to_deal(table, ind, tick):
-    #     """ Long only"""
+    #     """ Long and Short"""
     #     gf_copy = table.copy(deep=True)
     #     gf_copy = gf_copy.astype({tick: str}, errors='ignore')
     #     r = gf_copy[tick].values
@@ -136,11 +98,22 @@ def ts3(market_ticker, stock_ticker):  # table from strategy 1
     #     for i in range(len(ind)):
     #         try:
     #
-    #             if gf_copy.iloc[ind[i], 4] < 0 and gf_copy.iloc[ind[i], 4] > -2 \
+    #             if gf_copy.iloc[ind[i], 4] > 0 and gf_copy.iloc[ind[i], 4] < 2 \
+    #                     and gf_copy.iloc[ind[i] - 1, 4] > 2.5 and gf_copy.iloc[ind[i] - 1, 4] < 10 \
+    #                     and gf_copy.iloc[ind[i] - 2, 4] > 5 and gf_copy.iloc[ind[i] - 2, 4] < 15 \
+    #                     and gf_copy.iloc[ind[i] - 3, 4] > 0 and gf_copy.iloc[ind[i] - 3, 4] < 25 \
+    #                     and gf_copy.iloc[ind[i] - 4, 4] > 0 and gf_copy.iloc[ind[i] - 4, 4] < 20 \
+    #                     and gf_copy.iloc[ind[i] - 5, 4] < 20 \
+    #                     and gf_copy.iloc[ind[i], 3] < 4:
+    #                 r[i] = 'Short'  # buy
+    #                 # r[i] = 1  # buy
+    #             elif gf_copy.iloc[ind[i], 4] < 0 and gf_copy.iloc[ind[i], 4] > -2 \
     #                     and gf_copy.iloc[ind[i] - 1, 4] < -2.5 and gf_copy.iloc[ind[i] - 1, 4] > -30 \
     #                     and gf_copy.iloc[ind[i] - 2, 4] < 5 and gf_copy.iloc[ind[i] - 2, 4] > -40 \
     #                     and gf_copy.iloc[ind[i] - 3, 4] < -1 and gf_copy.iloc[ind[i] - 3, 4] > -30 \
-    #                     and gf_copy.iloc[ind[i] - 4, 4] < 10:
+    #                     and gf_copy.iloc[ind[i] - 4, 4] < 10 \
+    #                     and gf_copy.iloc[ind[i], 3] > -10:
+    #
     #                 # and gf_copy.iloc[ind[i] - 5, 4] < 20:
     #                 r[i] = 'Long'  # sell
     #                 # r[i] = 2
@@ -151,6 +124,33 @@ def ts3(market_ticker, stock_ticker):  # table from strategy 1
     #             r[i] = '0'
     #             # r[i] = 0
     #     return r
+
+
+    def signal_to_deal(table, ind, tick):
+        """ Long only"""
+        gf_copy = table.copy(deep=True)
+        gf_copy = gf_copy.astype({tick: str}, errors='ignore')
+        r = gf_copy[tick].values
+
+        for i in range(len(ind)):
+            try:
+
+                if gf_copy.iloc[ind[i], 4] < 0 and gf_copy.iloc[ind[i], 4] > -2 \
+                        and gf_copy.iloc[ind[i] - 1, 4] < -2.5 and gf_copy.iloc[ind[i] - 1, 4] > -30 \
+                        and gf_copy.iloc[ind[i] - 2, 4] < 5 and gf_copy.iloc[ind[i] - 2, 4] > -40 \
+                        and gf_copy.iloc[ind[i] - 3, 4] < -1 and gf_copy.iloc[ind[i] - 3, 4] > -30 \
+                        and gf_copy.iloc[ind[i] - 4, 4] < 10 \
+                        and gf_copy.iloc[ind[i], 3] > -10:
+                    # and gf_copy.iloc[ind[i] - 5, 4] < 20:
+                    r[i] = 'Long'  # sell
+                    # r[i] = 2
+                else:
+                    r[i] = '0'
+                    # r[i] = 0
+            except:
+                r[i] = '0'
+                # r[i] = 0
+        return r
 
     """ Сигнал когда недельная разница переходит из минуса в плюс и наоборот"""
     # def signal_to_deal(table, ind, tick):

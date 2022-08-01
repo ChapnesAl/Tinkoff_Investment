@@ -36,7 +36,7 @@ market_tick = '^GSPC'
 #             , 'OKE', 'TJX', 'GILD', 'MET', 'REGI', 'MU', 'OXY', 'MDLZ', 'KO', 'JD', 'WYNN', 'EIX', 'DOCU', 'SCHW', 'HIG', 'CLR', 'OMC', 'NTAP', 'MTCH', 'BALL', 'BBY', 'SO', 'SQ', 'BMY', 'ORCL', 'HAS', 'STX', 'DHI', 'ROST', 'D', 'ADM', 'ATVI', 'INCY', 'FSLR', 'NEE', 'SBUX', 'MS', 'H', 'TWLO']
 
 """ val_all_usd val_long_rub val_long_usd """
-share_tick = val_all_usd
+share_tick = val_long_usd
 # val_all_usd, val_long_usd, val_long_rub, val_all_rub
 
 

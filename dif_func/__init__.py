@@ -1,0 +1,2 @@
+from dif_func import my_operations
+from dif_func import companies_list

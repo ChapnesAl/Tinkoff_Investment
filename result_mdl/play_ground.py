@@ -36,7 +36,7 @@ market_tick = '^GSPC'
 #             , 'OKE', 'TJX', 'GILD', 'MET', 'REGI', 'MU', 'OXY', 'MDLZ', 'KO', 'JD', 'WYNN', 'EIX', 'DOCU', 'SCHW', 'HIG', 'CLR', 'OMC', 'NTAP', 'MTCH', 'BALL', 'BBY', 'SO', 'SQ', 'BMY', 'ORCL', 'HAS', 'STX', 'DHI', 'ROST', 'D', 'ADM', 'ATVI', 'INCY', 'FSLR', 'NEE', 'SBUX', 'MS', 'H', 'TWLO']
 
 """ val_all_usd val_long_rub val_long_usd """
-share_tick = val_all_rub
+share_tick = val_all_usd
 # val_all_usd, val_long_usd, val_long_rub, val_all_rub
 
 
@@ -97,36 +97,36 @@ share_tick = val_all_rub
 
 
 # '''Strategy 3 - Numbers Sum Results'''
-# if type(share_tick) == str:
-#     print(Base_mdl(ts3(market_tick, share_tick)).rt2())
-#     # print(rt2(ts2(market_tick, share_tick)))
-#     # print(ts2(market_tick,share_tick))
-# else:
-#     for i in range(len(share_tick)):
-#         try:
-#             share_tick[i] =(Base_mdl(ts3(market_tick, share_tick[i])).rt2())
-#             # share_tick[i] = rt2(ts2(market_tick, share_tick[i]))
-#         except:
-#             share_tick[i] = 0
-#     print(share_tick)
-#     print(sum(share_tick))
-
-
-'''Strategy 3 - Numbers Sum Results RUS MARKET'''
-if len(share_tick) == 2:
-    print(Base_mdl(ts3_rus(*share_tick)).rt2())
+if type(share_tick) == str:
+    print(Base_mdl(ts3(market_tick, share_tick)).rt2())
     # print(rt2(ts2(market_tick, share_tick)))
     # print(ts2(market_tick,share_tick))
 else:
     for i in range(len(share_tick)):
-        x = share_tick[i]
         try:
-            share_tick[i] =(Base_mdl(ts3_rus(*x)).rt2())
+            share_tick[i] =(Base_mdl(ts3(market_tick, share_tick[i])).rt2())
             # share_tick[i] = rt2(ts2(market_tick, share_tick[i]))
         except:
             share_tick[i] = 0
     print(share_tick)
     print(sum(share_tick))
+
+
+'''Strategy 3 - Numbers Sum Results RUS MARKET'''
+# if len(share_tick) == 2:
+#     print(Base_mdl(ts3_rus(*share_tick)).rt2())
+#     # print(rt2(ts2(market_tick, share_tick)))
+#     # print(ts2(market_tick,share_tick))
+# else:
+#     for i in range(len(share_tick)):
+#         x = share_tick[i]
+#         try:
+#             share_tick[i] =(Base_mdl(ts3_rus(*x)).rt2())
+#             # share_tick[i] = rt2(ts2(market_tick, share_tick[i]))
+#         except:
+#             share_tick[i] = 0
+#     print(share_tick)
+#     print(sum(share_tick))
 
 
 

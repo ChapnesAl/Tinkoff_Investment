@@ -23,10 +23,10 @@ def ts3(market_ticker, stock_ticker):  # table from strategy 1
     def get_data_from_ticker(tick):
         ticker = yf.Ticker(tick)
         # df = ticker.history(start='2021-01-01', end='2022-06-30')
-        # df = ticker.history(start='2021-01-01', end='2022-07-26')
+        df = ticker.history(start='2021-01-01', end='2022-07-26')
         # df = ticker.history(start='2020-01-01', end='2021-01-01')
         # df = ticker.history(start='2022-05-28')
-        df = ticker.history(start='2021-01-01')
+        # df = ticker.history(start='2021-01-01')
         x = pd.DataFrame(df)
         x.rename(columns={"Close": tick}, inplace=True)
         z = x.drop(columns=["Open", "High", "Low", "Volume", "Dividends", "Stock Splits"])
@@ -104,6 +104,9 @@ def ts3(market_ticker, stock_ticker):  # table from strategy 1
                         and gf_copy.iloc[ind[i] - 3, 4] > 0 and gf_copy.iloc[ind[i] - 3, 4] < 25 \
                         and gf_copy.iloc[ind[i] - 4, 4] > 0 and gf_copy.iloc[ind[i] - 4, 4] < 20 \
                         and gf_copy.iloc[ind[i] - 5, 4] < 20:
+                    """ add new column of day to day values """
+
+
                     r[i] = 'Short'  # buy
                     # r[i] = 1  # buy
                 elif gf_copy.iloc[ind[i], 4] < 0 and gf_copy.iloc[ind[i], 4] > -2 \

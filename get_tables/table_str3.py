@@ -104,7 +104,7 @@ def ts3(market_ticker, stock_ticker):  # table from strategy 1
                         and gf_copy.iloc[ind[i] - 3, 4] > 0 and gf_copy.iloc[ind[i] - 3, 4] < 25 \
                         and gf_copy.iloc[ind[i] - 4, 4] > 0 and gf_copy.iloc[ind[i] - 4, 4] < 20 \
                         and gf_copy.iloc[ind[i] - 5, 4] < 20 \
-                        and gf_copy.iloc[ind[i], 3] < 3.5:
+                        and gf_copy.iloc[ind[i], 3] < 4:
 
 
 
@@ -115,7 +115,9 @@ def ts3(market_ticker, stock_ticker):  # table from strategy 1
                         and gf_copy.iloc[ind[i] - 1, 4] < -2.5 and gf_copy.iloc[ind[i] - 1, 4] > -30 \
                         and gf_copy.iloc[ind[i] - 2, 4] < 5 and gf_copy.iloc[ind[i] - 2, 4] > -40 \
                         and gf_copy.iloc[ind[i] - 3, 4] < -1 and gf_copy.iloc[ind[i] - 3, 4] > -30 \
-                        and gf_copy.iloc[ind[i] - 4, 4] < 10:
+                        and gf_copy.iloc[ind[i] - 4, 4] < 10 \
+                        and gf_copy.iloc[ind[i], 3] > -4 :
+
                     # and gf_copy.iloc[ind[i] - 5, 4] < 20:
                     r[i] = 'Long'  # sell
                     # r[i] = 2

@@ -45,7 +45,8 @@ class Str3:
             y = f'Sum: {(self.share_tick)}'
         return x, y
 
-
+    def get_table(self):
+        return ts3(self.market_tick, self.share_tick)
 
 
 
@@ -54,4 +55,5 @@ class Str3:
 
 if __name__ == '__main__':
     # print(Str3('^GSPC', 'T').signals())
-    print(Str3('^GSPC', 'T').sum_results())
+    # print(Str3('^GSPC', 'T').sum_results())
+    print(Str3('^GSPC', 'T').get_table())

@@ -30,17 +30,14 @@ class Str3:
 
     def sum_results(self):
         if type(self.share_tick) == str:
-            x = Base_mdl(ts3(self.market_tick, self.share_tick)).rt2()
-            y = f"Sum: {x}"
+            self.share_tick = Base_mdl(ts3(self.market_tick, self.share_tick)).rt2()
         else:
             for i in range(len(self.share_tick)):
                 try:
-                    self.share_tick[i] = (Base_mdl(ts3(self.market_tick, self.share_tick[i])).rt2())
+                    self.share_tick[i] = Base_mdl(ts3(self.market_tick, self.share_tick[i])).rt2()
                 except:
                     self.share_tick[i] = 0
-            x = self.share_tick
-            y = f'Sum: {(self.share_tick)}'
-        return x, y
+        return self.share_tick
 
     def get_table(self):
         return ts3(self.market_tick, self.share_tick)
@@ -48,9 +45,22 @@ class Str3:
     def month_results(self):
         return Base_mdl(ts3(self.market_tick, self.share_tick)).date_sum2()
 
+    def month_results_without_bad(self):
+        """ WITH LAST CURRENT MONTH (6 now) """
+        if type(self.share_tick) == str:
+            self.share_tick = Base_mdl(ts3(self.market_tick, self.share_tick)).del_any_months()
+        else:
+            for i in range(len(self.share_tick)):
+                try:
+                    self.share_tick[i] = list(Base_mdl(ts3(self.market_tick, self.share_tick[i])).del_any_months())
+                except:
+                    self.share_tick[i] = 0
+        return self.share_tick
+
 
 if __name__ == '__main__':
     # print(Str3('^GSPC', 'T').signals())
-    # print(Str3('^GSPC', 'T').sum_results())
+    # print(Str3('^GSPC', ['T', 'AA']).sum_results())
     # print(Str3('^GSPC', 'T').get_table())
-    print(Str3('^GSPC', 'T').month_results())
+    # print(Str3('^GSPC', 'T').month_results())
+    print(Str3('^GSPC', ['T', 'AA', 'ssdsds']).month_results_without_bad())

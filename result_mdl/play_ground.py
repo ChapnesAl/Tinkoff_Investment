@@ -10,7 +10,7 @@ market_tick = '^GSPC'
 # market_tick = '^RUT'
 # market_tick = '^DJI'
 
-# share_tick = 'gps'
+share_tick = 'T'
 # share_tick = ['AAL', 'ACN', 'AMD']
 # share_tick = ['AAL', 'ACN', 'AMD', 'ABBV', 'AA', 'APLE', 'NFLX', 'VEON', 'SLDB']
 # share_tick = ['EAR', 'ZYNE', 'ASTR', 'BYSI', 'CORR', 'CRTX', 'CLOV', 'WKHS', 'HRTX', 'MFGP']
@@ -38,7 +38,7 @@ market_tick = '^GSPC'
 #             , 'OKE', 'TJX', 'GILD', 'MET', 'REGI', 'MU', 'OXY', 'MDLZ', 'KO', 'JD', 'WYNN', 'EIX', 'DOCU', 'SCHW', 'HIG', 'CLR', 'OMC', 'NTAP', 'MTCH', 'BALL', 'BBY', 'SO', 'SQ', 'BMY', 'ORCL', 'HAS', 'STX', 'DHI', 'ROST', 'D', 'ADM', 'ATVI', 'INCY', 'FSLR', 'NEE', 'SBUX', 'MS', 'H', 'TWLO']
 
 """ val_all_usd val_long_rub val_long_usd """
-share_tick = val_all_usd
+# share_tick = val_all_usd
 # val_all_usd, val_long_usd, val_long_rub, val_all_rub
 
 
@@ -136,19 +136,19 @@ share_tick = val_all_usd
 '''Strategy 3 - Signals'''
 '''   !!!  Add short period  !!!  '''
 """ !!! ADD LAST MONTH (NOW JUNE 6) !!! """
-if type(share_tick) == str or None:
-    print(Base_mdl(ts3(market_tick, share_tick)).signal2())
-else:
-    copy_names = share_tick.copy()
-    for i in range(len(share_tick)):
-        try:
-            share_tick[i] = (Base_mdl(ts3(market_tick, share_tick[i])).signal2())
-            # share_tick[i] = signal2(ts2(market_tick, share_tick[i])) # command before class update
-            d = {"Companies": copy_names, 'Signals': share_tick}
-        except:
-            share_tick[i] = 0
-    df = pd.DataFrame(data=d)
-    print(df[(df.Signals == 'Buy') | (df.Signals == 'Sell') | (df.Signals == 'Buy') | (df.Signals == 'Sell')])
+# if type(share_tick) == str or None:
+#     print(Base_mdl(ts3(market_tick, share_tick)).signal2())
+# else:
+#     copy_names = share_tick.copy()
+#     for i in range(len(share_tick)):
+#         try:
+#             share_tick[i] = (Base_mdl(ts3(market_tick, share_tick[i])).signal2())
+#             # share_tick[i] = signal2(ts2(market_tick, share_tick[i])) # command before class update
+#             d = {"Companies": copy_names, 'Signals': share_tick}
+#         except:
+#             share_tick[i] = 0
+#     df = pd.DataFrame(data=d)
+#     print(df[(df.Signals == 'Buy') | (df.Signals == 'Sell') | (df.Signals == 'Buy') | (df.Signals == 'Sell')])
 
 
 
@@ -170,13 +170,10 @@ else:
 '''Strategy 3 - Get Results of Month to Month Without any months'''
 ''' WITH LAST CURRENT MONTH (6 now)'''
 #
-# if type(share_tick) == str:
-#     print(Base_mdl(ts3(market_tick, share_tick)).del_any_months())
-#     # print(rt2(ts2(market_tick, share_tick)))
-#     # print(ts2(market_tick,share_tick))
-# else:
-#     for i in range(len(share_tick)):
-#         share_tick[i] =(Base_mdl(ts3(market_tick, share_tick[i])).del_any_months())
-#         # share_tick[i] = rt2(ts2(market_tick, share_tick[i]))
-#     print(share_tick)
-#     print(sum(share_tick))
+if type(share_tick) == str:
+    print(Base_mdl(ts3(market_tick, share_tick)).del_any_months())
+else:
+    for i in range(len(share_tick)):
+        share_tick[i] =(Base_mdl(ts3(market_tick, share_tick[i])).del_any_months())
+    print(share_tick)
+    print(sum(share_tick))

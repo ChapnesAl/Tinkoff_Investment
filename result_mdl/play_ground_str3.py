@@ -11,10 +11,11 @@ class Str3:
         self.market_tick = market_tick
         self.share_tick = share_tick
 
-    '''   !!!  Add short period  !!!  '''
-    """ !!! ADD LAST MONTH (NOW JUNE 6) !!! """
+
 
     def signals(self):
+        '''   !!!  Add short period  !!!  '''
+        """ !!! ADD LAST MONTH (NOW JUNE 6) !!! """
         if type(self.share_tick) == str or None:
             x = Base_mdl(ts3(self.market_tick, self.share_tick)).signal2()
         else:
@@ -30,5 +31,27 @@ class Str3:
         return x
 
 
+    def sum_results(self):
+        if type(self.share_tick) == str:
+            x = Base_mdl(ts3(self.market_tick, self.share_tick)).rt2()
+            y = f"Sum: {x}"
+        else:
+            for i in range(len(self.share_tick)):
+                try:
+                    self.share_tick[i] =(Base_mdl(ts3(self.market_tick, self.share_tick[i])).rt2())
+                except:
+                    self.share_tick[i] = 0
+            x = self.share_tick
+            y = f'Sum: {(self.share_tick)}'
+        return x, y
+
+
+
+
+
+
+
+
 if __name__ == '__main__':
-    print(Str3('^GSPC', 'T').signals())
+    # print(Str3('^GSPC', 'T').signals())
+    print(Str3('^GSPC', 'T').sum_results())

@@ -98,7 +98,7 @@ share_tick = 'T'
 
 
 
-# '''Strategy 3 - Numbers Sum Results'''
+'''Strategy 3 - Numbers Sum Results'''
 # if type(share_tick) == str:
 #     print(Base_mdl(ts3(market_tick, share_tick)).rt2())
 #     # print(rt2(ts2(market_tick, share_tick)))
@@ -170,10 +170,10 @@ share_tick = 'T'
 '''Strategy 3 - Get Results of Month to Month Without any months'''
 ''' WITH LAST CURRENT MONTH (6 now)'''
 #
-if type(share_tick) == str:
-    print(Base_mdl(ts3(market_tick, share_tick)).del_any_months())
-else:
-    for i in range(len(share_tick)):
-        share_tick[i] =(Base_mdl(ts3(market_tick, share_tick[i])).del_any_months())
-    print(share_tick)
-    print(sum(share_tick))
+# if type(share_tick) == str:
+#     print(Base_mdl(ts3(market_tick, share_tick)).del_any_months())
+# else:
+#     for i in range(len(share_tick)):
+#         share_tick[i] =(Base_mdl(ts3(market_tick, share_tick[i])).del_any_months())
+#     print(share_tick)
+#     print(sum(share_tick))

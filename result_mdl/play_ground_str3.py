@@ -31,13 +31,29 @@ class Str3:
     def sum_results(self):
         if type(self.share_tick) == str:
             self.share_tick = Base_mdl(ts3(self.market_tick, self.share_tick)).rt2()
+            rs = ''
         else:
             for i in range(len(self.share_tick)):
                 try:
                     self.share_tick[i] = Base_mdl(ts3(self.market_tick, self.share_tick[i])).rt2()
                 except:
                     self.share_tick[i] = 0
-        return self.share_tick
+            rs = sum(self.share_tick)
+        return self.share_tick, rs
+
+    def sum_results_rus(self):
+        if len(self.share_tick) == 2:
+            self.share_tick = Base_mdl(ts3_rus(*self.share_tick)).rt2()
+            rs = ''
+        else:
+            for i in range(len(self.share_tick)):
+                x = self.share_tick[i]
+                try:
+                    self.share_tick[i] = Base_mdl(ts3_rus(*x)).rt2()
+                except:
+                    self.share_tick[i] = 0
+        rs = sum(self.share_tick)
+        return self.share_tick, rs
 
     def get_table(self):
         return ts3(self.market_tick, self.share_tick)
@@ -49,18 +65,22 @@ class Str3:
         """ WITH LAST CURRENT MONTH (6 now) """
         if type(self.share_tick) == str:
             self.share_tick = Base_mdl(ts3(self.market_tick, self.share_tick)).del_any_months()
+            rs = ''
         else:
             for i in range(len(self.share_tick)):
                 try:
                     self.share_tick[i] = list(Base_mdl(ts3(self.market_tick, self.share_tick[i])).del_any_months())
                 except:
                     self.share_tick[i] = 0
-        return self.share_tick
+            rs = sum(self.share_tick)
+        return self.share_tick, rs
+
 
 
 if __name__ == '__main__':
     # print(Str3('^GSPC', 'T').signals())
-    # print(Str3('^GSPC', ['T', 'AA']).sum_results())
+    print(Str3('^GSPC', 'T').sum_results())
     # print(Str3('^GSPC', 'T').get_table())
     # print(Str3('^GSPC', 'T').month_results())
-    print(Str3('^GSPC', ['T', 'AA']).month_results_without_bad())
+    # print(Str3('^GSPC', ['T', 'AA']).month_results_without_bad())
+    # print(Str3('^GSPC', val_all_rub).sum_results_rus())

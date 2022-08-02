@@ -11,10 +11,8 @@ class Str3:
         self.market_tick = market_tick
         self.share_tick = share_tick
 
-
-
     def signals(self):
-        '''   !!!  Add short period  !!!  '''
+        """   !!!  Add short period  !!!  """
         """ !!! ADD LAST MONTH (NOW JUNE 6) !!! """
         if type(self.share_tick) == str or None:
             x = Base_mdl(ts3(self.market_tick, self.share_tick)).signal2()
@@ -30,7 +28,6 @@ class Str3:
             x = df[(df.Signals == 'Buy') | (df.Signals == 'Sell') | (df.Signals == 'Buy') | (df.Signals == 'Sell')]
         return x
 
-
     def sum_results(self):
         if type(self.share_tick) == str:
             x = Base_mdl(ts3(self.market_tick, self.share_tick)).rt2()
@@ -38,7 +35,7 @@ class Str3:
         else:
             for i in range(len(self.share_tick)):
                 try:
-                    self.share_tick[i] =(Base_mdl(ts3(self.market_tick, self.share_tick[i])).rt2())
+                    self.share_tick[i] = (Base_mdl(ts3(self.market_tick, self.share_tick[i])).rt2())
                 except:
                     self.share_tick[i] = 0
             x = self.share_tick
@@ -48,12 +45,12 @@ class Str3:
     def get_table(self):
         return ts3(self.market_tick, self.share_tick)
 
-
-
-
+    def month_results(self):
+        return Base_mdl(ts3(self.market_tick, self.share_tick)).date_sum2()
 
 
 if __name__ == '__main__':
     # print(Str3('^GSPC', 'T').signals())
     # print(Str3('^GSPC', 'T').sum_results())
-    print(Str3('^GSPC', 'T').get_table())
+    # print(Str3('^GSPC', 'T').get_table())
+    print(Str3('^GSPC', 'T').month_results())

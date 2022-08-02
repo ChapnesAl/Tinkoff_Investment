@@ -63,4 +63,4 @@ if __name__ == '__main__':
     # print(Str3('^GSPC', ['T', 'AA']).sum_results())
     # print(Str3('^GSPC', 'T').get_table())
     # print(Str3('^GSPC', 'T').month_results())
-    print(Str3('^GSPC', ['T', 'AA', 'ssdsds']).month_results_without_bad())
+    print(Str3('^GSPC', ['T', 'AA']).month_results_without_bad())

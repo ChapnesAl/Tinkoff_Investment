@@ -16,7 +16,7 @@ class Base_mdl:
 
     def signal2(self):
         gf_copy = self.table.copy(deep=True)
-        w = self.table.loc['2022-06-01':'2022-06-30']
+        w = self.table.loc['2022-07-01':'2022-07-30']
         e = w['Results'].sum()
         if gf_copy.iloc[-1, 5] == 'Long' and e < 6 and e > -6:
             a = 'Buy'

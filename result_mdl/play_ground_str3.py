@@ -8,7 +8,7 @@ import pandas as pd
 class Str3:
 
     def __init__(self, market_tick, share_tick):
-        self.market_tick = market_tick
+        self.market_tick = '^GSPC'
         self.share_tick = share_tick
 
     def signals(self):
@@ -79,7 +79,7 @@ class Str3:
 
 if __name__ == '__main__':
     # print(Str3('^GSPC', 'T').signals())
-    print(Str3('^GSPC', 'T').sum_results())
+    print(Str3( 'T').sum_results())
     # print(Str3('^GSPC', 'T').get_table())
     # print(Str3('^GSPC', 'T').month_results())
     # print(Str3('^GSPC', ['T', 'AA']).month_results_without_bad())

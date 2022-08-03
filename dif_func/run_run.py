@@ -5,6 +5,8 @@ mt = '^GSPC'
 st = 'T'
 
 
+"""  3 0 0 """
+
 # print(Str3_0_0('^GSPC', 'T').signals())
 print(Str3_0_0(mt, 'T').sum_results())
 # print(Str3_0_0('^GSPC', 'T').get_table())
@@ -12,3 +14,4 @@ print(Str3_0_0(mt, 'T').sum_results())
 # print(Str3_0_0('^GSPC', ['T', 'AA']).month_results_without_bad())
 # print(Str3_0_0('^GSPC', val_all_rub).sum_results_rus())
 
+"""  3 0 0 """

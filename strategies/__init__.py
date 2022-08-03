@@ -1,1 +1,1 @@
-from strategies import tables
+from strategies import str3

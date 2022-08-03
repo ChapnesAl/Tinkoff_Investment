@@ -1,4 +1,4 @@
-from strategies.tables.table3 import table_3_0
+from strategies.str3.str3_0 import table_3_0
 import numpy
 import pandas as pd
 import yfinance as yf

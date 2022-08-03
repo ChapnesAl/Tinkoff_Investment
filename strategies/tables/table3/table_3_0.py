@@ -1,0 +1,1 @@
+from strategies.tables.table3 import table_3_0

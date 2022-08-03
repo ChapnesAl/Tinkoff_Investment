@@ -15,7 +15,7 @@ def en_3_0_0(table):
 
     index = get_index(gf)
 
-    def signal_to_deal(table, ind, tick):
+    def entrance(table, ind, tick):
         """ Long and Short"""
         gf_copy = table.copy(deep=True)
         gf_copy = gf_copy.astype({tick: str}, errors='ignore')
@@ -72,7 +72,7 @@ def en_3_0_0(table):
         #             # r[i] = 0
         #     return r
 
-    gf["Signal"] = signal_to_deal(gf, index, stock_ticker)
+    gf["Signal"] = entrance(gf, index, stock_ticker)
 
     def result_of_strategy(table, ind, tick):
         gf_copy = table.copy(deep=True)

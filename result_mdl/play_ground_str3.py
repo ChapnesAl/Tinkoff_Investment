@@ -1,10 +1,8 @@
-from get_tables.table_str3 import ts3
 from get_tables.table_str3_rus import ts3_rus
 from result_mdl.base_rsl import Base_mdl
-from paper_filter.lists_papers import val_all_usd, val_long_usd, val_long_rub, val_all_rub
-from strategies.str3.str3_0.table_3_0 import ts3_0
-from strategies.str3.str3_0.enex_3_0_0 import en_3_0_0
-from strategies.str3.str3_0.enex_3_0_1 import en_3_0_1
+from strategies.str3.table_3_0 import ts3_0
+from strategies.str3.enex_3_0 import en_3_0_0
+from strategies.str3.enex_3_1 import en_3_0_1
 
 import pandas as pd
 

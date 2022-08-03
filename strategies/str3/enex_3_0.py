@@ -1,6 +1,4 @@
-import numpy
-import pandas as pd
-from strategies.str3.str3_0.table_3_0 import ts3_0
+from strategies.str3.table_3_0 import ts3_0
 
 
 def en_3_0_0(table):

@@ -1,6 +1,4 @@
-import numpy
-import pandas as pd
-from strategies.str3.str3_0.table_3_0 import ts3_0
+from strategies.str3.table_3_0 import ts3_0
 
 
 def en_3_0_1(table):
@@ -80,7 +78,27 @@ def en_3_0_1(table):
         for i in range(len(ind)):
             try:
                 if gf_copy.iloc[ind[i], 5] == 'Long':
-                    t[i] = gf_copy.iloc[ind[i] + 1, 3]  # buy
+                    t[i] = gf_copy.iloc[ind[i] + 1, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 2, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 3, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 4, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 5, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 6, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 7, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 8, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 9, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 10, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 11, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 12, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 13, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 14, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 15, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 16, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 17, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 18, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 19, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 20, 3]
+                    t[i] = gf_copy.iloc[ind[i] + 21, 3]
                 elif gf_copy.iloc[ind[i], 5] == 'Short':
                     t[i] = gf_copy.iloc[ind[i] + 1, 3] * -1  # sell
                 else:

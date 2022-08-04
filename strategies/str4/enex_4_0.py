@@ -77,9 +77,9 @@ def en_4_0(table):
         t = gf_copy[tick].values
         for i in range(len(ind)):
             try:
-                if gf_copy.iloc[ind[i], 5] == 'Long':
+                if gf_copy.iloc[ind[i], 6] == 'Long':
                     t[i] = gf_copy.iloc[ind[i] + 1, 3]  # buy
-                elif gf_copy.iloc[ind[i], 5] == 'Short':
+                elif gf_copy.iloc[ind[i], 6] == 'Short':
                     t[i] = gf_copy.iloc[ind[i] + 1, 3] * -1  # sell
                 else:
                     t[i] = 0

@@ -29,7 +29,8 @@ def en_4_0(table):
                         and gf_copy.iloc[ind[i] - 4, 5] > 0 and gf_copy.iloc[ind[i] - 4, 5] < 20 \
                         and gf_copy.iloc[ind[i] - 5, 5] < 20 \
                         and gf_copy.iloc[ind[i], 3] < 4\
-                        and gf_copy.iloc[ind[i], 4] > -10 and gf_copy.iloc[ind[i], 4] < 5:
+                        and gf_copy.iloc[ind[i], 4] > -10 and gf_copy.iloc[ind[i], 4] < 4.5\
+                        and gf_copy.iloc[ind[i] - 1, 4] < 4.5:
                     r[i] = 'Short'
                 elif gf_copy.iloc[ind[i], 5] < 0 and gf_copy.iloc[ind[i], 5] > -2 \
                         and gf_copy.iloc[ind[i] - 1, 5] < -2.5 and gf_copy.iloc[ind[i] - 1, 5] > -30 \
@@ -37,7 +38,7 @@ def en_4_0(table):
                         and gf_copy.iloc[ind[i] - 3, 5] < -1 and gf_copy.iloc[ind[i] - 3, 5] > -30 \
                         and gf_copy.iloc[ind[i] - 4, 5] < 10 \
                         and gf_copy.iloc[ind[i], 3] > -10\
-                        and gf_copy.iloc[ind[i], 4] < 2 and gf_copy.iloc[ind[i], 4] > -10:
+                        and gf_copy.iloc[ind[i], 4] < 1 and gf_copy.iloc[ind[i], 4] > -10:
 
                     r[i] = 'Long'
                 else:

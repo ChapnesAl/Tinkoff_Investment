@@ -23,6 +23,12 @@ share_tick = ["HEAR", "SNAP", "TAK", "XRX", 'NTNX', 'HA', 'CLF', 'PLUG', 'ACAD',
 
 print(Str3_0_1(mt, val_all_usd).sum_results())
 
+
+"""  3 0 1 """
+
+print(Str3_0_1(mt, val_all_usd).sum_results())
+
+
 """  4 0 0 """
 
 # print(Str4_0_0('^GSPC', 'T').get_table())

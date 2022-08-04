@@ -21,9 +21,9 @@ def ts3_0(market_ticker, stock_ticker):  # table from strategy 1
     def get_data_from_ticker(tick):
         ticker = yf.Ticker(tick)
         # df = ticker.history(start='2021-01-01', end='2022-06-30')
-        # df = ticker.history(start='2021-01-01', end='2022-07-26')
+        df = ticker.history(start='2021-01-01', end='2022-07-26')
         # df = ticker.history(start='2020-01-01', end='2021-01-01')
-        df = ticker.history(start='2022-05-28')
+        # df = ticker.history(start='2022-05-28')
         # df = ticker.history(start='2021-01-01')
         x = pd.DataFrame(df)
         x.rename(columns={"Close": tick}, inplace=True)

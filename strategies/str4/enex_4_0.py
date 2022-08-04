@@ -22,19 +22,19 @@ def en_4_0(table):
         for i in range(len(ind)):
             try:
 
-                if gf_copy.iloc[ind[i], 4] > 0 and gf_copy.iloc[ind[i], 4] < 2 \
-                        and gf_copy.iloc[ind[i] - 1, 4] > 2.5 and gf_copy.iloc[ind[i] - 1, 4] < 10 \
-                        and gf_copy.iloc[ind[i] - 2, 4] > 5 and gf_copy.iloc[ind[i] - 2, 4] < 15 \
-                        and gf_copy.iloc[ind[i] - 3, 4] > 0 and gf_copy.iloc[ind[i] - 3, 4] < 25 \
-                        and gf_copy.iloc[ind[i] - 4, 4] > 0 and gf_copy.iloc[ind[i] - 4, 4] < 20 \
-                        and gf_copy.iloc[ind[i] - 5, 4] < 20 \
+                if gf_copy.iloc[ind[i], 5] > 0 and gf_copy.iloc[ind[i], 5] < 2 \
+                        and gf_copy.iloc[ind[i] - 1, 5] > 2.5 and gf_copy.iloc[ind[i] - 1, 5] < 10 \
+                        and gf_copy.iloc[ind[i] - 2, 5] > 5 and gf_copy.iloc[ind[i] - 2, 5] < 15 \
+                        and gf_copy.iloc[ind[i] - 3, 5] > 0 and gf_copy.iloc[ind[i] - 3, 5] < 25 \
+                        and gf_copy.iloc[ind[i] - 4, 5] > 0 and gf_copy.iloc[ind[i] - 4, 5] < 20 \
+                        and gf_copy.iloc[ind[i] - 5, 5] < 20 \
                         and gf_copy.iloc[ind[i], 3] < 4:
                     r[i] = 'Short'
-                elif gf_copy.iloc[ind[i], 4] < 0 and gf_copy.iloc[ind[i], 4] > -2 \
-                        and gf_copy.iloc[ind[i] - 1, 4] < -2.5 and gf_copy.iloc[ind[i] - 1, 4] > -30 \
-                        and gf_copy.iloc[ind[i] - 2, 4] < 5 and gf_copy.iloc[ind[i] - 2, 4] > -40 \
-                        and gf_copy.iloc[ind[i] - 3, 4] < -1 and gf_copy.iloc[ind[i] - 3, 4] > -30 \
-                        and gf_copy.iloc[ind[i] - 4, 4] < 10 \
+                elif gf_copy.iloc[ind[i], 5] < 0 and gf_copy.iloc[ind[i], 5] > -2 \
+                        and gf_copy.iloc[ind[i] - 1, 5] < -2.5 and gf_copy.iloc[ind[i] - 1, 5] > -30 \
+                        and gf_copy.iloc[ind[i] - 2, 5] < 5 and gf_copy.iloc[ind[i] - 2, 5] > -40 \
+                        and gf_copy.iloc[ind[i] - 3, 5] < -1 and gf_copy.iloc[ind[i] - 3, 5] > -30 \
+                        and gf_copy.iloc[ind[i] - 4, 5] < 10 \
                         and gf_copy.iloc[ind[i], 3] > -10:
 
                     r[i] = 'Long'

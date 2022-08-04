@@ -16,7 +16,7 @@ share_tick = ["HEAR", "SNAP", "TAK", "XRX", 'NTNX', 'HA', 'CLF', 'PLUG', 'ACAD',
 # print(Str3_0_0('^GSPC', 'T').month_results())
 # print(Str3_0_0('^GSPC', ['T', 'AA']).month_results_without_bad())
 # print(Str3_0_0('^GSPC', val_all_rub).sum_results_rus())
-# print(Str3_0_0(mt, val_all_usd).sum_results())
+# print(Str3_0_0(mt, val_long_usd).sum_results())
 
 
 """  3 0 1 """
@@ -26,5 +26,5 @@ share_tick = ["HEAR", "SNAP", "TAK", "XRX", 'NTNX', 'HA', 'CLF', 'PLUG', 'ACAD',
 """  4 0 0 """
 
 # print(Str4_0_0('^GSPC', 'T').get_table())
-# print(Str4_0_0(mt, share_tick).sum_results())
-print(Str4_0_0(mt, val_all_usd).sum_results())
+print(Str4_0_0(mt, share_tick).sum_results())
+# print(Str4_0_0(mt, val_all_usd).sum_results())

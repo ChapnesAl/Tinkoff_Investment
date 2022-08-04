@@ -18,7 +18,7 @@ def en_3_0_0(table):
         gf_copy = table.copy(deep=True)
         gf_copy = gf_copy.astype({tick: str}, errors='ignore')
         r = gf_copy[tick].values
-
+    #
         for i in range(len(ind)):
             try:
 
@@ -44,31 +44,28 @@ def en_3_0_0(table):
                 r[i] = '0'
         return r
 
-        # def signal_to_deal(table, ind, tick):
-        #     """ Long only"""
-        #     gf_copy = table.copy(deep=True)
-        #     gf_copy = gf_copy.astype({tick: str}, errors='ignore')
-        #     r = gf_copy[tick].values
-        #
-        #     for i in range(len(ind)):
-        #         try:
-        #
-        #             if gf_copy.iloc[ind[i], 4] < 0 and gf_copy.iloc[ind[i], 4] > -2 \
-        #                     and gf_copy.iloc[ind[i] - 1, 4] < -2.5 and gf_copy.iloc[ind[i] - 1, 4] > -30 \
-        #                     and gf_copy.iloc[ind[i] - 2, 4] < 5 and gf_copy.iloc[ind[i] - 2, 4] > -40 \
-        #                     and gf_copy.iloc[ind[i] - 3, 4] < -1 and gf_copy.iloc[ind[i] - 3, 4] > -30 \
-        #                     and gf_copy.iloc[ind[i] - 4, 4] < 10 \
-        #                     and gf_copy.iloc[ind[i], 3] > -10:
-        #                 # and gf_copy.iloc[ind[i] - 5, 4] < 20:
-        #                 r[i] = 'Long'  # sell
-        #                 # r[i] = 2
-        #             else:
-        #                 r[i] = '0'
-        #                 # r[i] = 0
-        #         except:
-        #             r[i] = '0'
-        #             # r[i] = 0
-        #     return r
+
+    # def entrance(table, ind, tick):
+    #     """ Long only"""
+    #     gf_copy = table.copy(deep=True)
+    #     gf_copy = gf_copy.astype({tick: str}, errors='ignore')
+    #     r = gf_copy[tick].values
+    #     for i in range(len(ind)):
+    #         try:
+    #             if gf_copy.iloc[ind[i], 4] < 0 and gf_copy.iloc[ind[i], 4] > -2 \
+    #                     and gf_copy.iloc[ind[i] - 1, 4] < -2.5 and gf_copy.iloc[ind[i] - 1, 4] > -30 \
+    #                     and gf_copy.iloc[ind[i] - 2, 4] < 5 and gf_copy.iloc[ind[i] - 2, 4] > -40 \
+    #                     and gf_copy.iloc[ind[i] - 3, 4] < -1 and gf_copy.iloc[ind[i] - 3, 4] > -30 \
+    #                     and gf_copy.iloc[ind[i] - 4, 4] < 10 \
+    #                      and gf_copy.iloc[ind[i], 3] > -10:
+    #                     # and gf_copy.iloc[ind[i] - 5, 4] < 20:
+    #                   r[i] = 'Long'
+    #             else:
+    #                  r[i] = '0'
+    #         except:
+    #              r[i] = '0'
+    #                 # r[i] = 0
+    #     return r
 
     gf["Signal"] = entrance(gf, index, stock_ticker)
 

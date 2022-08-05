@@ -13,10 +13,7 @@ t2 = 'acn'
 
 def ts_4_1(market_ticker, stock_ticker, stime='2022-01-01', ftime=None, interval='1d'):
 
-    # market_ticker = '^GSPC'
-    # stock_ticker = 'AAPL'
 
-    # s = 'AAPL'
 
     def get_data_from_ticker(tick, stime, ftime, interval):
         ticker = yf.Ticker(tick)
@@ -68,7 +65,6 @@ def ts_4_1(market_ticker, stock_ticker, stime='2022-01-01', ftime=None, interval
         t = gf_copy2.iloc[:, 2]
         for i in range(len(ind)):
             try:
-                # 7 days
                 if gf_copy.iloc[ind[i], 2] in [gf_copy.iloc[0, 2], gf_copy.iloc[1, 2], gf_copy.iloc[2, 2],
                                                gf_copy.iloc[3, 2], gf_copy.iloc[4, 2], gf_copy.iloc[5, 2],
                                                gf_copy.iloc[6, 2]]:
@@ -90,7 +86,6 @@ def ts_4_1(market_ticker, stock_ticker, stime='2022-01-01', ftime=None, interval
         t = gf_copy2.iloc[:, 3]
         for i in range(len(ind)):
             try:
-                # 7 days
                 if gf_copy.iloc[ind[i], 3] in [gf_copy.iloc[0, 3], gf_copy.iloc[1, 3], gf_copy.iloc[2, 3],
                                                gf_copy.iloc[3, 3], gf_copy.iloc[4, 3], gf_copy.iloc[5, 3],
                                                gf_copy.iloc[6, 3]]:
@@ -108,4 +103,4 @@ def ts_4_1(market_ticker, stock_ticker, stime='2022-01-01', ftime=None, interval
     return gf
 
 if __name__ == '__main__':
-    print(ts_4_0(t1, t2))
+    print(ts_4_1(t1, t2))

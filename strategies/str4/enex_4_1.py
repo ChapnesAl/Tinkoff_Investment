@@ -22,24 +22,14 @@ def en_4_1(table):
         for i in range(len(ind)):
             try:
 
-                if gf_copy.iloc[ind[i], 5] > 0 and gf_copy.iloc[ind[i], 5] < 2 \
-                        and gf_copy.iloc[ind[i] - 1, 5] > 2.5 and gf_copy.iloc[ind[i] - 1, 5] < 10 \
-                        and gf_copy.iloc[ind[i] - 2, 5] > 5 and gf_copy.iloc[ind[i] - 2, 5] < 15 \
-                        and gf_copy.iloc[ind[i] - 3, 5] > 0 and gf_copy.iloc[ind[i] - 3, 5] < 25 \
-                        and gf_copy.iloc[ind[i] - 4, 5] > 0 and gf_copy.iloc[ind[i] - 4, 5] < 20 \
-                        and gf_copy.iloc[ind[i] - 5, 5] < 20 \
-                        and gf_copy.iloc[ind[i], 3] < 4\
-                        and gf_copy.iloc[ind[i], 4] > -10 and gf_copy.iloc[ind[i], 4] < 4.5\
-                        and gf_copy.iloc[ind[i] - 1, 4] < 4.5:
+                if gf_copy.iloc[ind[i], 3] in [gf_copy.iloc[0, 3], gf_copy.iloc[1, 3], gf_copy.iloc[2, 3],
+                                               gf_copy.iloc[3, 3], gf_copy.iloc[4, 3], gf_copy.iloc[5, 3],
+                                               gf_copy.iloc[6, 3], gf_copy.iloc[7, 3], gf_copy.iloc[8, 3],
+                                               gf_copy.iloc[9, 3]]:
+                    r[i] = 0
+                elif gf_copy.iloc[ind[i], 4] > 2.5:
                     r[i] = 'Short'
-                elif gf_copy.iloc[ind[i], 5] < 0 and gf_copy.iloc[ind[i], 5] > -2 \
-                        and gf_copy.iloc[ind[i] - 1, 5] < -2.5 and gf_copy.iloc[ind[i] - 1, 5] > -30 \
-                        and gf_copy.iloc[ind[i] - 2, 5] < 5 and gf_copy.iloc[ind[i] - 2, 5] > -40 \
-                        and gf_copy.iloc[ind[i] - 3, 5] < -1 and gf_copy.iloc[ind[i] - 3, 5] > -30 \
-                        and gf_copy.iloc[ind[i] - 4, 5] < 10 \
-                        and gf_copy.iloc[ind[i], 3] > -10\
-                        and gf_copy.iloc[ind[i], 4] < 1 and gf_copy.iloc[ind[i], 4] > -10:
-
+                elif gf_copy.iloc[ind[i], 4] < -3:
                     r[i] = 'Long'
                 else:
                     r[i] = '0'

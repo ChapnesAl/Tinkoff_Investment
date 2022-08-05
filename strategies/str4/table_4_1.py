@@ -9,19 +9,22 @@ pd.set_option('display.width', 1000)
 """ Data to add"""
 t1 = '^GSPC'
 t2 = 'acn'
-stime = '2022-01-01'
-interval = '1wk'
 
 
-def ts3_1(market_ticker, stock_ticker, stime='2022-01-01', ftime=None, interval='1wk'):
+def ts_4_1(market_ticker, stock_ticker, stime='2022-01-01', ftime=None, interval='1d'):
+
+    # market_ticker = '^GSPC'
+    # stock_ticker = 'AAPL'
+
+    # s = 'AAPL'
 
     def get_data_from_ticker(tick, stime, ftime, interval):
         ticker = yf.Ticker(tick)
         # df = ticker.history(start='2021-01-01', end='2022-06-30')
-        # df = ticker.history(start='2020-01-01', end='2022-07-26', interval='1wk')
-        # df = ticker.history(start='2020-01-01', end='2021-01-01', interval='1wk')
+        # df = ticker.history(start='2021-01-01', end='2022-07-26')
+        # df = ticker.history(start='2020-01-01', end='2021-01-01')
+        # df = ticker.history(start='2022-05-28')
         df = ticker.history(start=stime, end=ftime, interval=interval)
-        # df = ticker.history(start='2021-01-01')
         x = pd.DataFrame(df)
         x.rename(columns={"Close": tick}, inplace=True)
         z = x.drop(columns=["Open", "High", "Low", "Volume", "Dividends", "Stock Splits"])
@@ -58,7 +61,29 @@ def ts3_1(market_ticker, stock_ticker, stime='2022-01-01', ftime=None, interval=
 
     index = get_index(gf)
 
-    def add_week_difference(table, ind):
+    def add_week_difference_market(table, ind):
+        """ Sum of date stock's update"""
+        gf_copy = table.copy(deep=True)
+        gf_copy2 = table.copy(deep=True)
+        t = gf_copy2.iloc[:, 2]
+        for i in range(len(ind)):
+            try:
+                # 7 days
+                if gf_copy.iloc[ind[i], 2] in [gf_copy.iloc[0, 2], gf_copy.iloc[1, 2], gf_copy.iloc[2, 2],
+                                               gf_copy.iloc[3, 2], gf_copy.iloc[4, 2], gf_copy.iloc[5, 2],
+                                               gf_copy.iloc[6, 2]]:
+                    t[i] = 0
+                else:
+                    t[i] = (gf_copy.iloc[ind[i], 2] + gf_copy.iloc[ind[i] - 1, 2] + gf_copy.iloc[ind[i] - 2, 2] +
+                            gf_copy.iloc[ind[i] - 3, 2] + gf_copy.iloc[ind[i] - 4, 2] + gf_copy.iloc[ind[i] - 5, 2] +
+                            gf_copy.iloc[ind[i] - 6, 2])
+            except:
+                t[i] = 0
+        return t
+
+    gf["Week dif Mar"] = add_week_difference_market(gf, index)
+
+    def add_week_difference_stock(table, ind):
         """ Sum of date stock's update"""
         gf_copy = table.copy(deep=True)
         gf_copy2 = table.copy(deep=True)
@@ -71,17 +96,16 @@ def ts3_1(market_ticker, stock_ticker, stime='2022-01-01', ftime=None, interval=
                                                gf_copy.iloc[6, 3]]:
                     t[i] = 0
                 else:
-                    t[i] = (gf_copy.iloc[ind[i], 3] + gf_copy.iloc[ind[i] - 1, 3] + gf_copy.iloc[ind[i] - 2, 3]
-                            + gf_copy.iloc[ind[i] - 3, 3] + gf_copy.iloc[ind[i] - 4, 3] + gf_copy.iloc[ind[i] - 5, 3]
-                            + gf_copy.iloc[ind[i] - 6, 3])
+                    t[i] = (gf_copy.iloc[ind[i], 3] + gf_copy.iloc[ind[i] - 1, 3] + gf_copy.iloc[ind[i] - 2, 3] +
+                            gf_copy.iloc[ind[i] - 3, 3] + gf_copy.iloc[ind[i] - 4, 3] + gf_copy.iloc[ind[i] - 5, 3] +
+                            gf_copy.iloc[ind[i] - 6, 3])
             except:
                 t[i] = 0
         return t
 
-    gf["Week differ Stock"] = add_week_difference(gf, index)
+    gf["Week dif St"] = add_week_difference_stock(gf, index)
 
     return gf
 
-
 if __name__ == '__main__':
-    print(ts3_1(t1, t2))
+    print(ts_4_0(t1, t2))

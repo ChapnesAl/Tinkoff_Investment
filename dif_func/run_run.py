@@ -43,3 +43,6 @@ print(Str3_1_1('^GSPC', 'HEAR', interval='1wk').get_table())
 # print(Str4_0_0('^GSPC', 'T').get_table())
 # print(Str4_0_0(mt, share_tick).sum_results())
 # print(Str4_0_0(mt, val_all_usd).sum_results())
+
+
+"""  4 1 1 """

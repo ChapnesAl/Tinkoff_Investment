@@ -151,20 +151,25 @@ class Str3_0_1:
 
 class Str3_1_1:
 
-    def __init__(self, market_tick, share_tick):
-        self.market_tick = '^GSPC'
+    def __init__(self, market_tick, share_tick, stime='2022-01-01', ftime=None, interval='1d'):
+        self.market_tick = market_tick
         self.share_tick = share_tick
+        self.stime = stime
+        self.ftime = ftime
+        self.interval = interval
 
     def signals(self):
         """   !!!  Add short period  !!!  """
         """ !!! ADD LAST MONTH (NOW JUNE 6) !!! """
         if type(self.share_tick) == str or None:
-            x = Base_mdl(en_3_0_1(ts3_1(self.market_tick, self.share_tick))).signal2()
+            x = Base_mdl(en_3_0_1(ts3_1(self.market_tick, self.share_tick,
+                                        self.stime, self.ftime, self.interval))).signal2()
         else:
             copy_names = self.share_tick.copy()
             for i in range(len(self.share_tick)):
                 try:
-                    self.share_tick[i] = (Base_mdl(en_3_0_1(ts3_1(self.market_tick, self.share_tick[i]))).signal2())
+                    self.share_tick[i] = (Base_mdl(en_3_0_1(ts3_1(self.market_tick, self.share_tick[i],
+                                                                  self.stime, self.ftime, self.interval))).signal2())
                     d = {"Companies": copy_names, 'Signals': self.share_tick}
                 except:
                     self.share_tick[i] = 0
@@ -174,12 +179,14 @@ class Str3_1_1:
 
     def sum_results(self):
         if type(self.share_tick) == str:
-            self.share_tick = Base_mdl(en_3_0_1(ts3_1(self.market_tick, self.share_tick))).rt2()
+            self.share_tick = Base_mdl(en_3_0_1(ts3_1(self.market_tick, self.share_tick,
+                                                                  self.stime, self.ftime, self.interval))).rt2()
             rs = ''
         else:
             for i in range(len(self.share_tick)):
                 try:
-                    self.share_tick[i] = Base_mdl(en_3_0_1(ts3_1(self.market_tick, self.share_tick[i]))).rt2()
+                    self.share_tick[i] = Base_mdl(en_3_0_1(ts3_1(self.market_tick, self.share_tick[i],
+                                                                  self.stime, self.ftime, self.interval))).rt2()
                 except:
                     self.share_tick[i] = 0
             rs = sum(self.share_tick)
@@ -200,21 +207,25 @@ class Str3_1_1:
         return self.share_tick, rs
 
     def get_table(self):
-        return en_3_0_1(ts3_1(self.market_tick,self.share_tick))
+        return en_3_0_1(ts3_1(self.market_tick, self.share_tick,
+                                    self.stime, self.ftime, self.interval))
 
 
     def month_results(self):
-        return Base_mdl(en_3_0_1(ts3_1(self.market_tick, self.share_tick))).date_sum2()
+        return Base_mdl(en_3_0_1(ts3_1(self.market_tick, self.share_tick,
+                                         self.stime, self.ftime, self.interval))).date_sum2()
 
     def month_results_without_bad(self):
         """ WITH LAST CURRENT MONTH (6 now) """
         if type(self.share_tick) == str:
-            self.share_tick = Base_mdl(en_3_0_1(ts3_1(self.market_tick, self.share_tick))).del_any_months()
+            self.share_tick = Base_mdl(en_3_0_1(ts3_1(self.market_tick, self.share_tick,
+                                                     self.stime, self.ftime, self.interval))).del_any_months()
             rs = ''
         else:
             for i in range(len(self.share_tick)):
                 try:
-                    self.share_tick[i] = list(Base_mdl(en_3_0_1(ts3_1(self.market_tick, self.share_tick[i]))).del_any_months())
+                    self.share_tick[i] = list(Base_mdl(en_3_0_1(ts3_1(self.market_tick, self.share_tick[i],
+                                                                  self.stime, self.ftime, self.interval))).del_any_months())
                 except:
                     self.share_tick[i] = 0
             rs = sum(self.share_tick)

@@ -9,29 +9,27 @@ pd.set_option('display.width', 1000)
 """ Data to add"""
 t1 = '^GSPC'
 t2 = 'acn'
+stime = '2022-01-01'
+ftime = None
+interval = '1wk'
+
+def ts3_1(market_ticker, stock_ticker,  stime='2022-01-01', ftime=None, interval='1d'):
 
 
-def ts3_1(market_ticker, stock_ticker):  # table from strategy 1
-
-    # market_ticker = '^GSPC'
-    # stock_ticker = 'AAPL'
-
-    # s = 'AAPL'
-
-    def get_data_from_ticker(tick):
+    def get_data_from_ticker(tick, stime, ftime, interval):
         ticker = yf.Ticker(tick)
         # df = ticker.history(start='2021-01-01', end='2022-06-30')
-        # df = ticker.history(start='2021-01-01', end='2022-07-26')
-        df = ticker.history(start='2020-01-01', end='2021-01-01', interval='1wk' )
-        # df = ticker.history(start='2022-05-28')
+        # df = ticker.history(start='2020-01-01', end='2022-07-26', interval='1wk')
+        # df = ticker.history(start='2020-01-01', end='2021-01-01', interval='1wk')
+        df = ticker.history(start=stime, end=ftime, interval=interval)
         # df = ticker.history(start='2021-01-01')
         x = pd.DataFrame(df)
         x.rename(columns={"Close": tick}, inplace=True)
         z = x.drop(columns=["Open", "High", "Low", "Volume", "Dividends", "Stock Splits"])
         return z
 
-    gf = pd.DataFrame(get_data_from_ticker(market_ticker))
-    sf = pd.DataFrame(get_data_from_ticker(stock_ticker))
+    gf = pd.DataFrame(get_data_from_ticker(market_ticker, stime, ftime, interval))
+    sf = pd.DataFrame(get_data_from_ticker(stock_ticker, stime, ftime, interval))
     extracted_col = sf[stock_ticker]
     gf[stock_ticker] = extracted_col
 
@@ -69,14 +67,14 @@ def ts3_1(market_ticker, stock_ticker):  # table from strategy 1
         for i in range(len(ind)):
             try:
                 # 7 days
-                if gf_copy.iloc[ind[i], 3] in [gf_copy.iloc[0, 3], gf_copy.iloc[1, 3], gf_copy.iloc[2, 3]]:
-                                               # gf_copy.iloc[3, 3], gf_copy.iloc[4, 3], gf_copy.iloc[5, 3],
-                                               # gf_copy.iloc[6, 3]]:
+                if gf_copy.iloc[ind[i], 3] in [gf_copy.iloc[0, 3], gf_copy.iloc[1, 3], gf_copy.iloc[2, 3],
+                                               gf_copy.iloc[3, 3], gf_copy.iloc[4, 3], gf_copy.iloc[5, 3],
+                                               gf_copy.iloc[6, 3]]:
                     t[i] = 0
                 else:
-                    t[i] = gf_copy.iloc[ind[i], 3] + gf_copy.iloc[ind[i] - 1, 3] + gf_copy.iloc[ind[i] - 2, 3]
-                            # + gf_copy.iloc[ind[i] - 3, 3] + gf_copy.iloc[ind[i] - 4, 3] + gf_copy.iloc[ind[i] - 5, 3] +
-                            # gf_copy.iloc[ind[i] - 6, 3]
+                    t[i] = (gf_copy.iloc[ind[i], 3] + gf_copy.iloc[ind[i] - 1, 3] + gf_copy.iloc[ind[i] - 2, 3]
+                            + gf_copy.iloc[ind[i] - 3, 3] + gf_copy.iloc[ind[i] - 4, 3] + gf_copy.iloc[ind[i] - 5, 3]
+                            + gf_copy.iloc[ind[i] - 6, 3])
             except:
                 t[i] = 0
         return t

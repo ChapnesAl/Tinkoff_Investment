@@ -76,7 +76,7 @@ def en_4_1(table):
         for i in range(len(ind)):
             try:
                 if gf_copy.iloc[ind[i], 6] == 'Long':
-                    t[i] = gf_copy.iloc[ind[i] + 1, 3] # buy
+                    t[i] = gf_copy.iloc[ind[i] + 1, 3]# buy
                 elif gf_copy.iloc[ind[i], 6] == 'Short':
                     t[i] = gf_copy.iloc[ind[i] + 1, 3] * -1  # sell
                 else:

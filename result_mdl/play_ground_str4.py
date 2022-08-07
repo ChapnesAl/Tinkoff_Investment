@@ -103,18 +103,36 @@ class Str4_1_1:
         """ !!! ADD LAST MONTH (NOW JUNE 6) !!! """
         if type(self.share_tick) == str or None:
             x = Base_mdl(en_4_1(ts_4_1(self.market_tick, self.share_tick,
-                                        self.stime, self.ftime, self.interval))).signal2()
+                                                self.stime, self.ftime, self.interval))).signal2()
         else:
             copy_names = self.share_tick.copy()
             for i in range(len(self.share_tick)):
                 try:
-                    self.share_tick[i] = (Base_mdl(en_4_1(ts_4_1(self.market_tick, self.share_tick[i],
-                                                                  self.stime, self.ftime, self.interval))).signal2())
+                    self.share_tick[i] = Base_mdl(en_4_1(ts_4_1(self.market_tick, self.share_tick[i],
+                                                                  self.stime, self.ftime, self.interval))).signal2()
+                    d = {"Companies": copy_names, 'Signals': self.share_tick}
+                    print(d)
+                except:
+                    self.share_tick[i] = 0
+            df = pd.DataFrame(data=d)
+            x = df[(df.Signals == 'Buy') | (df.Signals == 'Sell') | (df.Signals == 'Buy-2') | (df.Signals == 'Sell-2')]
+        return x
+
+    def signals_without_gap(self):
+        if type(self.share_tick) == str or None:
+            x = Base_mdl(en_4_1(ts_4_1(self.market_tick, self.share_tick,
+                                                self.stime, self.ftime, self.interval))).signal1()
+        else:
+            copy_names = self.share_tick.copy()
+            for i in range(len(self.share_tick)):
+                try:
+                    self.share_tick[i] = Base_mdl(en_4_1(ts_4_1(self.market_tick, self.share_tick[i],
+                                                                  self.stime, self.ftime, self.interval))).signal1()
                     d = {"Companies": copy_names, 'Signals': self.share_tick}
                 except:
                     self.share_tick[i] = 0
             df = pd.DataFrame(data=d)
-            x = df[(df.Signals == 'Buy') | (df.Signals == 'Sell') | (df.Signals == 'Buy') | (df.Signals == 'Sell')]
+            x = df[(df.Signals == 'Buy') | (df.Signals == 'Sell')]
         return x
 
     def sum_results(self):
@@ -147,7 +165,7 @@ class Str4_1_1:
         return self.share_tick, rs
 
     def get_table(self):
-        return en_4_0(ts_4_0(self.market_tick,self.share_tick))
+        return en_4_1(ts_4_1(self.market_tick, self.share_tick, self.stime, self.ftime, self.interval))
 
 
     def month_results(self):

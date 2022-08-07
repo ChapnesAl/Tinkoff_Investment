@@ -14,17 +14,28 @@ class Base_mdl:
         """All table and sum of result"""
         return self.table['Results'].sum()
 
+
+    def signal1(self):
+        gf_copy = self.table.copy(deep=True)
+        if gf_copy.iloc[-1, 6] == 'Long':
+            a = 'Buy'
+        elif gf_copy.iloc[-1, 6] == 'Short':
+            a = 'Sell'
+        else:
+            return
+        return a
+
     def signal2(self):
         gf_copy = self.table.copy(deep=True)
         w = self.table.loc['2022-07-01':'2022-07-30']
         e = w['Results'].sum()
-        if gf_copy.iloc[-1, 5] == 'Long' and e < 6 and e > -6:
+        if gf_copy.iloc[-1, 6] == 'Long' and e < 6 and e > -6:
             a = 'Buy'
-        elif gf_copy.iloc[-1, 5] == 'Long' and e <= -6:
+        elif gf_copy.iloc[-1, 6] == 'Long' and e <= -6:
             a = 'Buy-2'
-        elif gf_copy.iloc[-1, 5] == 'Short' and e < 6 and e > -6:
+        elif gf_copy.iloc[-1, 6] == 'Short' and e < 6 and e > -6:
             a = 'Sell'
-        elif gf_copy.iloc[-1, 5] == 'Short' and e <= -6:
+        elif gf_copy.iloc[-1, 6] == 'Short' and e <= -6:
             a = 'Sell-2'
         else:
             return

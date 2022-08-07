@@ -40,7 +40,7 @@ a2 = val_all_usd
 
 """  3 0 0 """
 
-# print(Str3_0_0('^GSPC', 'T').signals())
+# print(Str3_0_0('^GSPC', share_tick1).signals())
 # print(Str3_0_0(mt, 'T').sum_results())
 # print(Str3_0_0('^GSPC', 'T').get_table())
 # print(Str3_0_0('^GSPC', 'T').month_results())
@@ -69,9 +69,13 @@ a2 = val_all_usd
 # print(Str4_0_0(mt, val_all_usd).sum_results())
 
 """  4 1 1 """
-print(int(Str4_1_1('^GSPC', share_tick1, stime='2019-05-01', ftime='2021-01-01', interval='1wk').sum_results()))
-print(int(Str4_1_1('^GSPC', share_tick1a, stime='2020-05-01', ftime='2022-01-01', interval='1wk').sum_results()))
-print(inr(Str4_1_1('^GSPC', share_tick1b, stime='2021-06-01', ftime='2022-08-03', interval='1wk').sum_results()))
+# print(int(Str4_1_1('^GSPC', share_tick1, stime='2019-05-01', ftime='2021-01-01', interval='1wk').sum_results()))
+# print(int(Str4_1_1('^GSPC', share_tick1a, stime='2020-05-01', ftime='2022-01-01', interval='1wk').sum_results()))
+# print(int(Str4_1_1('^GSPC', share_tick1b, stime='2021-06-01', ftime='2022-08-03', interval='1wk').sum_results()))
 # print(int(Str4_1_1('^GSPC', val_all_usd, stime='2020-01-01', ftime='2022-08-03', interval='1wk').sum_results()))
+# print(int(Str4_1_1('^GSPC', ['aple', 'T'], stime='2020-01-01', ftime='2022-08-03', interval='1wk').sum_results()))
 
 
+# print(Str4_1_1('^GSPC', ['aple', 'T'], stime='2022-01-01', ftime='2022-07-22',  interval='1wk').signals())
+# print(Str4_1_1('^GSPC', val_all_usd, stime='2022-01-01',  interval='1wk').signals_without_gap())
+print(Str4_1_1('^GSPC', 'intc', stime='2022-01-01',  interval='1wk').get_table())

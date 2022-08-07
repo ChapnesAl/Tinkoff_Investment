@@ -130,7 +130,7 @@ class Str4_1_1:
                 except:
                     self.share_tick[i] = 0
             rs = sum(self.share_tick)
-        return self.share_tick, rs
+        return rs #self.share_tick, rs
 
     def sum_results_rus(self):  # неисправлена архитектура
         if len(self.share_tick) == 2:

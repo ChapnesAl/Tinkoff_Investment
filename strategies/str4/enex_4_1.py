@@ -27,9 +27,18 @@ def en_4_1(table):
                                                gf_copy.iloc[6, 3], gf_copy.iloc[7, 3], gf_copy.iloc[8, 3],
                                                gf_copy.iloc[9, 3]]:
                     r[i] = 0
-                elif gf_copy.iloc[ind[i], 4] > 2.5:
+                elif gf_copy.iloc[ind[i], 5] > 2 and gf_copy.iloc[ind[i], 5] < 45 \
+                    and gf_copy.iloc[ind[i] - 1, 5] > 0\
+                        and gf_copy.iloc[ind[i], 4] > 0\
+                            and gf_copy.iloc[ind[i], 3] > -10 and gf_copy.iloc[ind[i], 3] < 10\
+                                and gf_copy.iloc[ind[i], 2] > -3 and gf_copy.iloc[ind[i], 2] < 4:
                     r[i] = 'Short'
-                elif gf_copy.iloc[ind[i], 4] < -3:
+                elif gf_copy.iloc[ind[i], 5] < 1\
+                    and gf_copy.iloc[ind[i] - 1, 5] < 15\
+                        and gf_copy.iloc[ind[i], 4] < 0.5\
+                          and gf_copy.iloc[ind[i], 3] < 10  and gf_copy.iloc[ind[i], 3] > -43\
+                                and gf_copy.iloc[ind[i], 2] < 5:
+                                # and gf_copy.iloc[ind[i] - 1, 2] > -5
                     r[i] = 'Long'
                 else:
                     r[i] = '0'
@@ -67,7 +76,7 @@ def en_4_1(table):
         for i in range(len(ind)):
             try:
                 if gf_copy.iloc[ind[i], 6] == 'Long':
-                    t[i] = gf_copy.iloc[ind[i] + 1, 3]  # buy
+                    t[i] = gf_copy.iloc[ind[i] + 1, 3] # buy
                 elif gf_copy.iloc[ind[i], 6] == 'Short':
                     t[i] = gf_copy.iloc[ind[i] + 1, 3] * -1  # sell
                 else:

@@ -14,6 +14,11 @@ class Base_mdl:
         """All table and sum of result"""
         return self.table['Results'].sum()
 
+    def deals_counts(self):
+        self.table = self.table[(self.table.Signal == 'Long') | (self.table.Signal == 'Short')]
+        return len(self.table['Signal'].values)
+
+
 
     def signal1(self):
         gf_copy = self.table.copy(deep=True)

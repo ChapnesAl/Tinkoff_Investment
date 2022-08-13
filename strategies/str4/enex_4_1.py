@@ -23,46 +23,121 @@ def en_4_1(table):
             try:
 
                 if gf_copy.iloc[ind[i], 3] in [gf_copy.iloc[0, 3], gf_copy.iloc[1, 3], gf_copy.iloc[2, 3],
-                                               gf_copy.iloc[3, 3], gf_copy.iloc[4, 3], gf_copy.iloc[5, 3],
-                                               gf_copy.iloc[6, 3], gf_copy.iloc[7, 3], gf_copy.iloc[8, 3],
-                                               gf_copy.iloc[9, 3]]:
+                                               gf_copy.iloc[3, 3], gf_copy.iloc[4, 3], gf_copy.iloc[5, 3]]:
                     r[i] = 0
-                elif gf_copy.iloc[ind[i], 5] > 2 and gf_copy.iloc[ind[i], 5] < 45 \
-                    and gf_copy.iloc[ind[i] - 1, 5] > 0 \
-                        and gf_copy.iloc[ind[i] - 2, 5] > -20 \
-                        and gf_copy.iloc[ind[i], 4] > 0 and gf_copy.iloc[ind[i], 4] < 10 \
-                        and gf_copy.iloc[ind[i] - 1, 4] < 5\
-                            and gf_copy.iloc[ind[i], 3] > -10 and gf_copy.iloc[ind[i], 3] < 10\
-                                and gf_copy.iloc[ind[i], 2] > -3 and gf_copy.iloc[ind[i], 2] < 4:
+
+
+                elif gf_copy.iloc[ind[i], 2] > (gf_copy.iloc[ind[i] - 1, 2] + 1.5) \
+                        and gf_copy.iloc[ind[i], 2] < 1:
                     r[i] = 'Short'
-                elif gf_copy.iloc[ind[i], 5] < 1\
-                    and gf_copy.iloc[ind[i] - 1, 5] < 15\
-                    and gf_copy.iloc[ind[i] - 2, 5] < 2\
-                        and gf_copy.iloc[ind[i], 4] < 0.5 \
-                        and gf_copy.iloc[ind[i] - 1, 4] < 3\
-                            and gf_copy.iloc[ind[i], 3] < 10  and gf_copy.iloc[ind[i], 3] > -43\
-                                and gf_copy.iloc[ind[i], 2] < 5:
-                                # and gf_copy.iloc[ind[i] - 1, 2] > -5
-                    r[i] = 'Long'
-                elif gf_copy.iloc[ind[i], 5] < 2 and gf_copy.iloc[ind[i], 5] > -50\
-                        and gf_copy.iloc[ind[i] - 1, 5] < 4 \
-                        and gf_copy.iloc[ind[i] - 2, 5] < 30\
-                            and gf_copy.iloc[ind[i], 4] > -30\
-                                and gf_copy.iloc[ind[i], 3] > -25:
+
+                elif gf_copy.iloc[ind[i], 4] < (gf_copy.iloc[ind[i] - 1, 4] - 0.5) \
+                        and gf_copy.iloc[ind[i], 4] > -1 and gf_copy.iloc[ind[i], 4] < 0:
                     r[i] = 'Short'
-                elif gf_copy.iloc[ind[i], 5] < 1.5 and gf_copy.iloc[ind[i], 5] > -40 \
-                       and gf_copy.iloc[ind[i] - 1, 5] > -35\
-                            and gf_copy.iloc[ind[i], 3] > -20\
-                            and gf_copy.iloc[ind[i], 2] < 10:
+
+                elif gf_copy.iloc[ind[i], 2] < (gf_copy.iloc[ind[i] - 1, 2] - 1) \
+                        and gf_copy.iloc[ind[i], 2] < 0.5 and gf_copy.iloc[ind[i], 2] > -1:
                     r[i] = 'Long'
-                # elif gf_copy.iloc[ind[i], 3] > 10\
-                #         and gf_copy.iloc[ind[i]-1, 3] > 10 --- bad :
-                #     r[i] = 'Short'
+
+                elif gf_copy.iloc[ind[i], 4] > (gf_copy.iloc[ind[i] - 1, 4] + 0.5) \
+                        and gf_copy.iloc[ind[i], 4] > 1:
+                    r[i] = 'Long'
+
                 else:
                     r[i] = '0'
             except:
                 r[i] = '0'
         return r
+
+
+    # def entrance(table, ind, tick):
+    #     """ Long and Short"""
+    #     gf_copy = table.copy(deep=True)
+    #     gf_copy = gf_copy.astype({tick: str}, errors='ignore')
+    #     r = gf_copy[tick].values
+    #
+    #     for i in range(len(ind)):
+    #         try:
+    #
+    #             if gf_copy.iloc[ind[i], 3] in [gf_copy.iloc[0, 3], gf_copy.iloc[1, 3], gf_copy.iloc[2, 3],
+    #                                            gf_copy.iloc[3, 3], gf_copy.iloc[4, 3], gf_copy.iloc[5, 3],
+    #                                            gf_copy.iloc[6, 3], gf_copy.iloc[7, 3], gf_copy.iloc[8, 3],
+    #                                            gf_copy.iloc[9, 3]]:
+    #                 r[i] = 0
+    #             elif gf_copy.iloc[ind[i], 5] > 2 and gf_copy.iloc[ind[i], 5] < 45 \
+    #                     and gf_copy.iloc[ind[i] - 1, 5] > 0 \
+    #                     and gf_copy.iloc[ind[i] - 2, 5] > -20 \
+    #                     and gf_copy.iloc[ind[i], 4] > 0 and gf_copy.iloc[ind[i], 4] < 10 \
+    #                     and gf_copy.iloc[ind[i] - 1, 4] < 5 \
+    #                     and gf_copy.iloc[ind[i], 3] > -10 and gf_copy.iloc[ind[i], 3] < 10 \
+    #                     and gf_copy.iloc[ind[i], 2] > -3 and gf_copy.iloc[ind[i], 2] < 4:
+    #                 r[i] = 'Short'
+    #             elif gf_copy.iloc[ind[i], 5] < 1 \
+    #                     and gf_copy.iloc[ind[i] - 1, 5] < 15 \
+    #                     and gf_copy.iloc[ind[i] - 2, 5] < 2 \
+    #                     and gf_copy.iloc[ind[i], 4] < 0.5 \
+    #                     and gf_copy.iloc[ind[i] - 1, 4] < 3 \
+    #                     and gf_copy.iloc[ind[i], 3] < 10 and gf_copy.iloc[ind[i], 3] > -43 \
+    #                     and gf_copy.iloc[ind[i], 2] < 5:
+    #                 # and gf_copy.iloc[ind[i] - 1, 2] > -5
+    #                 r[i] = 'Long'
+
+
+        #             r[i] = '0'
+        #     except:
+        #         r[i] = '0'
+        # return r
+
+    # def entrance(table, ind, tick):
+    #     """ Long and Short"""
+    #     gf_copy = table.copy(deep=True)
+    #     gf_copy = gf_copy.astype({tick: str}, errors='ignore')
+    #     r = gf_copy[tick].values
+    #
+    #     for i in range(len(ind)):
+    #         try:
+    #
+    #             if gf_copy.iloc[ind[i], 3] in [gf_copy.iloc[0, 3], gf_copy.iloc[1, 3], gf_copy.iloc[2, 3],
+    #                                            gf_copy.iloc[3, 3], gf_copy.iloc[4, 3], gf_copy.iloc[5, 3],
+    #                                            gf_copy.iloc[6, 3], gf_copy.iloc[7, 3], gf_copy.iloc[8, 3],
+    #                                            gf_copy.iloc[9, 3]]:
+    #                 r[i] = 0
+    #             elif gf_copy.iloc[ind[i], 5] > 2 and gf_copy.iloc[ind[i], 5] < 45 \
+    #                 and gf_copy.iloc[ind[i] - 1, 5] > 0 \
+    #                     and gf_copy.iloc[ind[i] - 2, 5] > -20 \
+    #                     and gf_copy.iloc[ind[i], 4] > 0 and gf_copy.iloc[ind[i], 4] < 10 \
+    #                     and gf_copy.iloc[ind[i] - 1, 4] < 5\
+    #                         and gf_copy.iloc[ind[i], 3] > -10 and gf_copy.iloc[ind[i], 3] < 10\
+    #                             and gf_copy.iloc[ind[i], 2] > -3 and gf_copy.iloc[ind[i], 2] < 4:
+    #                 r[i] = 'Short'
+    #             elif gf_copy.iloc[ind[i], 5] < 1\
+    #                 and gf_copy.iloc[ind[i] - 1, 5] < 15\
+    #                 and gf_copy.iloc[ind[i] - 2, 5] < 2\
+    #                     and gf_copy.iloc[ind[i], 4] < 0.5 \
+    #                     and gf_copy.iloc[ind[i] - 1, 4] < 3\
+    #                         and gf_copy.iloc[ind[i], 3] < 10  and gf_copy.iloc[ind[i], 3] > -43\
+    #                             and gf_copy.iloc[ind[i], 2] < 5:
+    #                             # and gf_copy.iloc[ind[i] - 1, 2] > -5
+    #                 r[i] = 'Long'
+    #             elif gf_copy.iloc[ind[i], 5] < 2 and gf_copy.iloc[ind[i], 5] > -50\
+    #                     and gf_copy.iloc[ind[i] - 1, 5] < 4 \
+    #                     and gf_copy.iloc[ind[i] - 2, 5] < 30\
+    #                         and gf_copy.iloc[ind[i], 4] > -30\
+    #                             and gf_copy.iloc[ind[i], 3] > -25:
+    #                 r[i] = 'Short'
+    #             elif gf_copy.iloc[ind[i], 5] < 1.5 and gf_copy.iloc[ind[i], 5] > -40 \
+    #                    and gf_copy.iloc[ind[i] - 1, 5] > -35\
+    #                         and gf_copy.iloc[ind[i], 3] > -20\
+    #                         and gf_copy.iloc[ind[i], 2] < 10:
+    #                 r[i] = 'Long'
+    #             # elif gf_copy.iloc[ind[i], 3] > 10\
+    #             #         and gf_copy.iloc[ind[i]-1, 3] > 10 --- bad :
+    #             #     r[i] = 'Short'
+    #             else:
+    #                 r[i] = '0'
+    #         except:
+    #             r[i] = '0'
+    #     return r
 
     # def entrance(table, ind, tick):
     #     """ Long only"""
@@ -96,7 +171,7 @@ def en_4_1(table):
                 if gf_copy.iloc[ind[i], 6] == 'Long':
                     t[i] = gf_copy.iloc[ind[i] + 1, 3]# buy
                 elif gf_copy.iloc[ind[i], 6] == 'Short':
-                    t[i] = gf_copy.iloc[ind[i] + 1, 3] * -1  # sell
+                    t[i] = gf_copy.iloc[ind[i] + 1, 3] * 1  # sell
                 else:
                     t[i] = 0
             except:

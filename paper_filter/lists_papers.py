@@ -26,11 +26,12 @@ val_long_rub = get_all_rus(df_filt4)
 
 
 if __name__ == '__main__':
-    # print(len(val_all_usd))
+    # print(val_all_usd)
     # print(len(val_long_usd))
     # print(val_long_usd)
-    print(val_all_rub)
+    # print(val_all_rub)
     # print(val_long_rub)
 
     # print(df_filt3)
     # print(y)
+    print(df)

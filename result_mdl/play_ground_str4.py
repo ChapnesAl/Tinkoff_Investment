@@ -6,6 +6,7 @@ from strategies.str4.table_4_1 import ts_4_1
 from strategies.str4.enex_4_1 import en_4_1
 from strategies.str4.table_4_2 import ts_4_2
 from strategies.str4.enex_4_2 import en_4_2
+import statistics as st
 import pandas as pd
 
 class Str4_0_0:
@@ -150,7 +151,8 @@ class Str4_1_1:
                 except:
                     self.share_tick[i] = 0
             rs = sum(self.share_tick)
-        return rs #self.share_tick, rs
+            mean = st.mean(self.share_tick)
+        return  mean # rs #self.share_tick, rs
 
     def sum_results_rus(self):  # неисправлена архитектура
         if len(self.share_tick) == 2:
@@ -179,7 +181,7 @@ class Str4_1_1:
                 except:
                     self.share_tick[i] = 0
             rs = sum(self.share_tick)
-        return  f'{rs} -> {int(rs * 0.05)}'  #self.share_tick, rs
+        return  f'{rs} -> {int(rs * 0.05)} -> {int(rs * 0.08)}'  #self.share_tick, rs
 
 
     def get_table(self):
@@ -267,7 +269,9 @@ class Str4_2_2:
                 except:
                     self.share_tick[i] = 0
             rs = sum(self.share_tick)
-        return rs #self.share_tick, rs
+            mean = st.mean(self.share_tick)
+
+            return mean  # rs #self.share_tick, rs
 
     def sum_results_rus(self):  # неисправлена архитектура
         if len(self.share_tick) == 2:
@@ -296,7 +300,7 @@ class Str4_2_2:
                 except:
                     self.share_tick[i] = 0
             rs = sum(self.share_tick)
-        return  f'{rs} -> {int(rs * 0.05)} -> {int(rs * 0.6)}'  #self.share_tick, rs
+        return  f'{rs} -> {int(rs * 0.05)} -> {int(rs * 0.08)}'  #self.share_tick, rs
 
 
     def get_table(self):

@@ -25,14 +25,53 @@ def en_4_2(table):
                 if gf_copy.iloc[ind[i], 3] in [gf_copy.iloc[0, 3], gf_copy.iloc[1, 3], gf_copy.iloc[2, 3],
                                                gf_copy.iloc[3, 3], gf_copy.iloc[4, 3], gf_copy.iloc[5, 3]]:
                     r[i] = 0
-                elif gf_copy.iloc[ind[i], 4] > -1.5 and gf_copy.iloc[ind[i], 4] < 0 \
-                       and gf_copy.iloc[ind[i], 5] < 5\
-                        and gf_copy.iloc[ind[i], 2] < 3:
+
+                    '''for only market'''
+                elif gf_copy.iloc[ind[i], 2] > (gf_copy.iloc[ind[i] - 1, 2] + 1.5)\
+                    and gf_copy.iloc[ind[i], 2] < 1:
                     r[i] = 'Short'
-                elif gf_copy.iloc[ind[i], 4] < 5 and gf_copy.iloc[ind[i], 4] > 0.5 \
-                    and gf_copy.iloc[ind[i], 5] > -3\
-                        and gf_copy.iloc[ind[i], 2] > -2:
+
+                elif gf_copy.iloc[ind[i], 4] < (gf_copy.iloc[ind[i] - 1, 4] - 0.5) \
+                and gf_copy.iloc[ind[i], 4] > -1 and gf_copy.iloc[ind[i], 4] < 0:
+                    r[i] = 'Short'
+
+                elif gf_copy.iloc[ind[i], 2] < (gf_copy.iloc[ind[i] - 1, 2] - 1)\
+                        and gf_copy.iloc[ind[i], 2] < 0.5 and gf_copy.iloc[ind[i], 2] > -1:
                     r[i] = 'Long'
+
+                elif gf_copy.iloc[ind[i], 4] > (gf_copy.iloc[ind[i] - 1, 4] + 0.5)\
+                    and gf_copy.iloc[ind[i], 4] > 1:
+                    r[i] = 'Long'
+
+                # elif gf_copy.iloc[ind[i], 4] < (gf_copy.iloc[ind[i] - 1, 4] - 0.5):
+                #     r[i] = 'Long'
+
+                # elif gf_copy.iloc[ind[i], 4] > (gf_copy.iloc[ind[i] - 1, 4] - 6) :
+                #     r[i] = 'Long'
+
+
+                # elif gf_copy.iloc[ind[i], 2] > (gf_copy.iloc[ind[i] - 1, 2] + 1) \
+                #         and gf_copy.iloc[ind[i], 2] > -2:
+                #     r[i] = 'Short'
+
+                # elif gf_copy.iloc[ind[i], 3] > (gf_copy.iloc[ind[i] - 1, 3] + 3) and (gf_copy.iloc[ind[i] - 1, 3]) > (gf_copy.iloc[ind[i] - 2, 3] + 3):
+                    # and gf_copy.iloc[ind[i], 3] < -0.5:
+                    # r[i] = 'Short'
+
+                # elif gf_copy.iloc[ind[i], 5] > 2 and gf_copy.iloc[ind[i], 5] < 2.5:   # 3+
+                #     r[i] = 'Long'
+                # elif gf_copy.iloc[ind[i], 2] > 0 and gf_copy.iloc[ind[i], 2] < 0.5:
+                #     r[i] = 'Short'
+                # elif gf_copy.iloc[ind[i], 4] > 1 and gf_copy.iloc[ind[i], 4] < 1.5:   # 3+
+                #     r[i] = 'Long'
+                # elif gf_copy.iloc[ind[i], 2] > -1 and gf_copy.iloc[ind[i], 2] < -0.5:
+                #     r[i] = 'Long'
+                # elif gf_copy.iloc[ind[i], 4] > 1.5 and gf_copy.iloc[ind[i], 4] < 2:   # 1+
+                #     r[i] = 'Long'
+                #elif f_copy.iloc[ind[i], 4] > -2.5 and gf_copy.iloc[ind[i], 4] < -2:   # 1+
+                #     r[i] = 'Long'
+                # elif gf_copy.iloc[ind[i], 5] > 2.5 and gf_copy.iloc[ind[i], 5] < 3:
+                #     r[i] = 'Short'
                 else:
                     r[i] = '0'
             except:
@@ -47,12 +86,20 @@ def en_4_2(table):
         t = gf_copy[tick].values
         for i in range(len(ind)):
             try:
+
                 if gf_copy.iloc[ind[i], 6] == 'Long':
-                    t[i] = gf_copy.iloc[ind[i] + 1, 3] + gf_copy.iloc[ind[i] + 2, 3] + gf_copy.iloc[ind[i] + 3, 3]# buy
+                    t[i] = gf_copy.iloc[ind[i] + 1, 3]  # buy
                 elif gf_copy.iloc[ind[i], 6] == 'Short':
-                    t[i] = gf_copy.iloc[ind[i] + 1, 3] * -1.5  # sell
+                    t[i] = gf_copy.iloc[ind[i] + 1, 3] * -1  # sell
                 else:
                     t[i] = 0
+                #
+                # if gf_copy.iloc[ind[i], 6] == 'Long':
+                #     t[i] = gf_copy.iloc[ind[i] + 1, 3] # buy
+                # elif gf_copy.iloc[ind[i], 6] == 'Short':
+                #     t[i] = gf_copy.iloc[ind[i] + 1, 3] * -1  # sell
+                # else:
+                #     t[i] = 0
             except:
                 t[i] = 0
 

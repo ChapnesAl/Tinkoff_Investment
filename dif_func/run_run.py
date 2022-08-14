@@ -243,25 +243,29 @@ xe = ['APLE', 'BAC', 'AAL', 'ABT', 'ALB']
 xf = ['APLE', 'BAC', 'AAL', 'ABT', 'ALB']
 
 
-# print(int(Str4_2_2('^GSPC', xa, stime='2018-05-01', ftime='2020-01-01', interval='1wk').sum_results()))
-# print(int(Str4_2_2('^GSPC', xb, stime='2019-05-01', ftime='2020-06-01', interval='1wk').sum_results()))
-# print(int(Str4_2_2('^GSPC', xc, stime='2019-10-01', ftime='2021-01-01', interval='1wk').sum_results()))
-# print(int(Str4_2_2('^GSPC', xd, stime='2020-05-01', ftime='2021-10-01', interval='1wk').sum_results()))
+# print(int(Str4_2_2('^GSPC', p_a, stime='2018-05-01', ftime='2020-01-01', interval='1wk').sum_results()))
+# print(int(Str4_2_2('^GSPC', p_b, stime='2019-05-01', ftime='2020-06-01', interval='1wk').sum_results()))
+# print(int(Str4_2_2('^GSPC', p_c, stime='2019-10-01', ftime='2021-01-01', interval='1wk').sum_results()))
+# print(int(Str4_2_2('^GSPC', p_d, stime='2020-05-01', ftime='2021-10-01', interval='1wk').sum_results()))
 # # print(Str4_2_2('^GSPC', xe, stime='2020-05-01', ftime='2021-10-01', interval='1wk').get_counts())
-# print(int(Str4_2_2('^GSPC', xe, stime='2021-06-01', ftime='2022-04-03', interval='1wk').sum_results()))
+# print(int(Str4_2_2('^GSPC', p_f, stime='2021-06-01', ftime='2022-04-03', interval='1wk').sum_results()))
 # # print(Str4_2_2('^GSPC', 'APLE', stime='2021-06-01',  ftime='2022-04-03', interval='1wk').get_counts())
-# print(Str4_2_2('^GSPC', val_all_usd, stime='2022-01-01', interval='1wk').sum_results())
-
-# print(Str4_2_2('^GSPC', ['aple', 't'], stime='2022-01-01', interval='1wk').signals_without_gap())
+# print(Str4_2_2('^GSPC', p_e, stime='2022-01-01', interval='1wk').sum_results())
 
 
-"""SNP"""
 
-print(Str4_2_2('^GSPC',   snp_b_15, stime='2018-05-01', ftime='2020-01-01', interval='1wk').sum_results())
-print(Str4_2_2('^GSPC', snp_b_15a, stime='2019-05-01', ftime='2020-06-01', interval='1wk').sum_results())
-print(Str4_2_2('^GSPC', snp_b_15b, stime='2019-10-01', ftime='2021-01-01', interval='1wk').sum_results())
-print(Str4_2_2('^GSPC', snp_b_15c, stime='2020-05-01', ftime='2021-10-01', interval='1wk').sum_results())
-# # print(Str4_2_2('^GSPC', xe, stime='2020-05-01', ftime='2021-10-01', interval='1wk').get_counts())
-print(Str4_2_2('^GSPC', snp_b_15d, stime='2021-06-01', ftime='2022-04-03', interval='1wk').sum_results())
-# print(Str4_2_2('^GSPC', 'APLE', stime='2021-06-01',  ftime='2022-04-03', interval='1wk').get_counts())
-print(Str4_2_2('^GSPC', snp_b_15e, stime='2022-01-01', interval='1wk').sum_results())
+"""With beta"""
+
+# print(Str4_2_2('^GSPC',   b_15_plus, stime='2018-05-01', ftime='2020-01-01', interval='1wk').sum_results())
+# print(Str4_2_2('^GSPC', b_15_plus_a, stime='2019-05-01', ftime='2020-06-01', interval='1wk').sum_results())
+# print(Str4_2_2('^GSPC', b_15_plus_b, stime='2019-10-01', ftime='2021-01-01', interval='1wk').sum_results())
+# print(Str4_2_2('^GSPC', b_15_plus_c, stime='2020-05-01', ftime='2021-10-01', interval='1wk').sum_results())
+# # # print(Str4_2_2('^GSPC', xe, stime='2020-05-01', ftime='2021-10-01', interval='1wk').get_counts())
+# print(Str4_2_2('^GSPC', b_15_plus_d, stime='2021-06-01', ftime='2022-04-03', interval='1wk').sum_results())
+# # print(Str4_2_2('^GSPC', 'APLE', stime='2021-06-01',  ftime='2022-04-03', interval='1wk').get_counts())
+# print(Str4_2_2('^GSPC', b_15_plus_e, stime='2022-01-01', interval='1wk').sum_results())
+
+
+
+
+print(Str4_2_2('^GSPC', b_15_plus, stime='2022-01-01', interval='1wk').signals_without_gap())

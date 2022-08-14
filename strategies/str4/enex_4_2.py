@@ -26,7 +26,6 @@ def en_4_2(table):
                                                gf_copy.iloc[3, 3], gf_copy.iloc[4, 3], gf_copy.iloc[5, 3]]:
                     r[i] = 0
 
-                    '''for only market'''
                 elif gf_copy.iloc[ind[i], 2] > (gf_copy.iloc[ind[i] - 1, 2] + 1.5)\
                     and gf_copy.iloc[ind[i], 2] < 1:
                     r[i] = 'Short'
@@ -35,13 +34,52 @@ def en_4_2(table):
                 and gf_copy.iloc[ind[i], 4] > -1 and gf_copy.iloc[ind[i], 4] < 0:
                     r[i] = 'Short'
 
+# !!!!!!
+
+                # elif gf_copy.iloc[ind[i], 4] > (gf_copy.iloc[ind[i] - 1, 4] + 1.5) \
+                #         and gf_copy.iloc[ind[i], 4] < 1 and gf_copy.iloc[ind[i], 4] > 0:
+                #     r[i] = 'Short'
+
                 elif gf_copy.iloc[ind[i], 2] < (gf_copy.iloc[ind[i] - 1, 2] - 1)\
                         and gf_copy.iloc[ind[i], 2] < 0.5 and gf_copy.iloc[ind[i], 2] > -1:
                     r[i] = 'Long'
 
+
                 elif gf_copy.iloc[ind[i], 4] > (gf_copy.iloc[ind[i] - 1, 4] + 0.5)\
                     and gf_copy.iloc[ind[i], 4] > 1:
                     r[i] = 'Long'
+
+
+                elif gf_copy.iloc[ind[i], 4] > (gf_copy.iloc[ind[i] - 1, 4] + 0.5) \
+                and gf_copy.iloc[ind[i], 4] < 0 and gf_copy.iloc[ind[i], 4] > -10:
+                    r[i] = 'Long'
+
+
+                elif gf_copy.iloc[ind[i], 3] < (gf_copy.iloc[ind[i] - 1, 3] - 0.5) and  gf_copy.iloc[ind[i] - 1, 3] < (gf_copy.iloc[ind[i] - 2, 3])\
+                and gf_copy.iloc[ind[i], 3] > -3 and gf_copy.iloc[ind[i], 3] < 1:
+                    r[i] = 'Short'
+
+
+                elif gf_copy.iloc[ind[i], 5] < (gf_copy.iloc[ind[i] - 1, 4] - 0.5) \
+                and gf_copy.iloc[ind[i], 5] > -2 and gf_copy.iloc[ind[i], 5] < 2:
+                    r[i] = 'Short'
+
+
+                elif gf_copy.iloc[ind[i], 3] < (gf_copy.iloc[ind[i] - 1, 3] - 1) \
+                        and gf_copy.iloc[ind[i], 3] < 0 and gf_copy.iloc[ind[i], 3] > -1:
+                    r[i] = 'Long'
+
+
+                elif gf_copy.iloc[ind[i], 3] < (gf_copy.iloc[ind[i] - 1, 3] - 1) \
+                        and gf_copy.iloc[ind[i], 3] > 1 and gf_copy.iloc[ind[i], 3] < 8:
+                    r[i] = 'Short'
+
+
+
+
+                # elif gf_copy.iloc[ind[i], 5] < (gf_copy.iloc[ind[i] - 1, 4] - 0.5) \
+                #         and gf_copy.iloc[ind[i], 5] > 2 and gf_copy.iloc[ind[i], 5] < 8:
+                #     r[i] = 'Long'
 
                 # elif gf_copy.iloc[ind[i], 4] < (gf_copy.iloc[ind[i] - 1, 4] - 0.5):
                 #     r[i] = 'Long'
@@ -112,4 +150,4 @@ def en_4_2(table):
 
 
 if __name__ == '__main__':
-    print(en_4_2(ts_4_2('^GSPC','T')))
+    print(en_4_2(ts_4_2('^GSPC','aple')))

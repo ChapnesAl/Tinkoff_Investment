@@ -8,42 +8,12 @@ from pprint import pprint
 
 
 
-class Get_extra_data():
-
-    def from_figi_to_ticker(self, figi):
-        with Client(test_token()) as client:
-            a = client.instruments.get_instrument_by(id_type=InstrumentIdType.INSTRUMENT_ID_TYPE_FIGI, id=figi)
-            b = getattr(getattr(a, 'instrument'), 'ticker')
-            return b
-
-    def from_ticker_to_figi(self, ticker):
-        with Client(test_token()) as client:
-            a = client.instruments.get_instrument_by(id=ticker, id_type=InstrumentIdType.INSTRUMENT_ID_TYPE_TICKER,
-                                                     class_code=ticker)
-            b = getattr(getattr(a, 'instrument'), 'ticker')
-            return b
-
-
-# c = client.instruments.share_by(id=figi, id_type=InstrumentIdType.INSTRUMENT_ID_TYPE_FIGI)
-# c = client.instruments.share_by(id='APLE', id_type=InstrumentIdType.INSTRUMENT_ID_TYPE_TICKER, class_code='APLE')
-#
-# Get_extra_data.from_ticker_to_figi(Get_extra_data,'SPX')
-
-
-# def from_ticker_to_figi(ticker):
-#     with Client(test_token()) as client:
-#         a = client.instruments.get_instrument_by(id=ticker, id_type=InstrumentIdType.INSTRUMENT_ID_TYPE_TICKER,
-#                                                  class_code=ticker)
-#         b = getattr(getattr(a, 'instrument'), 'figi')
-#         return b
-
-
 def from_ticker_to_figi(ticker, class_code):
     with Client(test_token()) as client:
         a = client.instruments.get_instrument_by(id=ticker, id_type=InstrumentIdType.INSTRUMENT_ID_TYPE_TICKER,
                                                  class_code=class_code)
         b = getattr(getattr(a, 'instrument'), 'figi')
-        return a
+        return b
 
 
 def from_figi_to_ticker(figi):
@@ -65,7 +35,6 @@ def get_time_of_market():
             to=datetime(2022, 7, 15), # time to more than 7 days
         )
         return a
-# pprint(get_time_of_market())
 
 def my_operations():
     try:
@@ -80,10 +49,7 @@ def my_operations():
     except RequestError as e:
         print(str(e))
     return a
-# pprint(my_operations())
 
-# pprint(from_ticker_to_figi('SRU2', 'SPBFUT'))
-print(from_figi_to_ticker('BBG000BNBDC2'))
 
 # figi='FUTSPYF09220',
 # ticker='SFU2',
@@ -111,3 +77,13 @@ print(from_figi_to_ticker('BBG000BNBDC2'))
 #     def user_money(self, user_id):  # get information about current user's money
 #         with self.connection:
 #             result = self.cursor.execute("SELECT `money` FROM users WHERE `user_id` = ?", (user_id,)).fetchmany(
+
+
+if __name__ == '__main__':
+    print(from_figi_to_ticker('BBG0013HGFT4'))
+
+
+
+# 0  BBG0013HGFT4        currency  100000.0
+# 1  FG0000000000        currency   -1250.0
+# 2  BBG004730N88           share      10.0

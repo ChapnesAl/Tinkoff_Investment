@@ -48,9 +48,6 @@ class AccPortfolio():
 
 
 
-
-
-
 def pay_in(acc_id):
     print('Песочница Тинькоф')
 
@@ -66,6 +63,5 @@ def pay_in(acc_id):
 
 
 if __name__ == '__main__':
-    # get_acc_portfolio(acc_id.acc_a)
     AccPortfolio(acc_id.acc_a).get_acc_portfolio()
     # pay_in(acc_id.acc_a)

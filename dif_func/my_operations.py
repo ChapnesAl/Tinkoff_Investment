@@ -30,7 +30,6 @@ def run():
     except RequestError as e:
         print(str(e))
 
-############################### <=== CLASS ===> ############################
 
 class MyOper:
     def __init__(self, client: Services):
@@ -60,7 +59,7 @@ class MyOper:
     def get_accounts(self):
         """
         Получаю все аккаунты и буду использовать только те
-        кот текущий токен может хотябы читать,
+        кот текущий токен может хотя бы читать,
         остальные акк пропускаю
         :return:
         """

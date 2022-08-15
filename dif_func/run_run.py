@@ -268,4 +268,7 @@ xf = ['APLE', 'BAC', 'AAL', 'ABT', 'ALB']
 
 
 
-print(Str4_2_2('^GSPC', b_15_plus, stime='2022-01-01', interval='1wk').signals_without_gap())
+# print(Str4_2_2('^GSPC', b_15_plus, stime='2022-01-01', interval='1wk').signals_without_gap())
+# print(Str4_2_2('^GSPC', val_long_usd, stime='2022-01-01', interval='1wk').signals_without_gap())
+# print(Str4_2_2('^GSPC', 'aple', stime='2022-01-01', ftime='2022-08-14', interval='1wk').get_table())
+print(Str4_2_2('^GSPC', 'aple', stime='2022-01-01', interval='1wk').get_table())

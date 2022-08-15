@@ -22,9 +22,9 @@ class Base_mdl:
 
     def signal1(self):
         gf_copy = self.table.copy(deep=True)
-        if gf_copy.iloc[-1, 6] == 'Long':
+        if gf_copy.iloc[-2, 6] == 'Long':
             a = 'Buy'
-        elif gf_copy.iloc[-1, 6] == 'Short':
+        elif gf_copy.iloc[-2, 6] == 'Short':
             a = 'Sell'
         else:
             return
@@ -34,13 +34,13 @@ class Base_mdl:
         gf_copy = self.table.copy(deep=True)
         w = self.table.loc['2022-07-01':'2022-07-30']
         e = w['Results'].sum()
-        if gf_copy.iloc[-1, 6] == 'Long' and e < 6 and e > -6:
+        if gf_copy.iloc[-2, 6] == 'Long' and e < 6 and e > -6:
             a = 'Buy'
-        elif gf_copy.iloc[-1, 6] == 'Long' and e <= -6:
+        elif gf_copy.iloc[-2, 6] == 'Long' and e <= -6:
             a = 'Buy-2'
-        elif gf_copy.iloc[-1, 6] == 'Short' and e < 6 and e > -6:
+        elif gf_copy.iloc[-2, 6] == 'Short' and e < 6 and e > -6:
             a = 'Sell'
-        elif gf_copy.iloc[-1, 6] == 'Short' and e <= -6:
+        elif gf_copy.iloc[-2, 6] == 'Short' and e <= -6:
             a = 'Sell-2'
         else:
             return

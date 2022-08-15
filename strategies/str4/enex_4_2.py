@@ -131,13 +131,6 @@ def en_4_2(table):
                     t[i] = gf_copy.iloc[ind[i] + 1, 3] * -1  # sell
                 else:
                     t[i] = 0
-                #
-                # if gf_copy.iloc[ind[i], 6] == 'Long':
-                #     t[i] = gf_copy.iloc[ind[i] + 1, 3] # buy
-                # elif gf_copy.iloc[ind[i], 6] == 'Short':
-                #     t[i] = gf_copy.iloc[ind[i] + 1, 3] * -1  # sell
-                # else:
-                #     t[i] = 0
             except:
                 t[i] = 0
 
@@ -150,4 +143,4 @@ def en_4_2(table):
 
 
 if __name__ == '__main__':
-    print(en_4_2(ts_4_2('^GSPC','aple')))
+    print(en_4_2(ts_4_2('^GSPC','Aple')))

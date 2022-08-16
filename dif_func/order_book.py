@@ -13,8 +13,15 @@ def order_book(token, figi):
         bids = [cast_money(p.price) for p in book.bids]
         asks = [cast_money(p.price) for p in book.asks]
 
-    return(bids, asks)
+    return bids, asks
+
+def spread_ob(token, figi):
+
+    a = order_book(token, figi)
+    b = min(a[1]) - max(a[0])
+    return b
 
 
 if __name__ == '__main__':
-    print(order_book(test_token(),'BBG0013HGFT4'))
+    # print(order_book(test_token(),'BBG0013HGFT4'))
+    print(spread_ob(test_token(), 'BBG0013HGFT4'))

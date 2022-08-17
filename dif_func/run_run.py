@@ -2,7 +2,7 @@
 from result_mdl.play_ground_str3 import Str3_0_0, Str3_0_1, Str3_1_1
 from result_mdl.play_ground_str4 import Str4_0_0, Str4_1_1, Str4_2_2
 from paper_filter.lists_papers import val_all_usd, val_long_usd, val_long_rub, val_all_rub
-
+from datetime import datetime
 from tickers import p_a, p_b, p_c, p_d, p_e, p_f
 from tickers import p2_a, p2_b, p2_c, p2_d, p2_e, p2_f
 from tickers import snp_b2, snp_b2a, snp_b2b, snp_b2c, snp_b2d, snp_b2e
@@ -267,8 +267,7 @@ xf = ['APLE', 'BAC', 'AAL', 'ABT', 'ALB']
 
 
 
-
-# print(Str4_2_2('^GSPC', b_15_plus, stime='2022-01-01', interval='1wk').signals_without_gap())
+# print(Str4_2_2('^GSPC', b_15_plus, stime='2022-01-01',ftime='2022-08-15', interval='1wk').signals_without_gap())
 # print(Str4_2_2('^GSPC', val_long_usd, stime='2022-01-01', interval='1wk').signals_without_gap())
 # print(Str4_2_2('^GSPC', 'aple', stime='2022-01-01', ftime='2022-08-14', interval='1wk').get_table())
-print(Str4_2_2('^GSPC', 'aple', stime='2022-01-01', interval='1wk').get_table())
+print(Str4_2_2('^GSPC', 'aple', stime='2022-01-01',  interval='1wk').get_table())

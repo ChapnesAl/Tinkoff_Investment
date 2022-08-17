@@ -1,5 +1,5 @@
 import pandas as pd
-from get_tables.table_str3 import ts3
+from strategies.str4.table_4_2 import ts_4_2
 
 t1 = '^GSPC'
 t2 = 'HPE'
@@ -125,7 +125,7 @@ class Base_mdl:
 
 # date_sum2(ts2(t1, t2))
 if __name__ == "__main__":
-    x = Base_mdl(ts3(t1, t2))
+    x = Base_mdl(ts_4_2(t1, t2))
     # print(x.date_sum2())
     # print(sum(x.date_sum2()))
 

@@ -29,24 +29,24 @@ def graf_of_candles():
     except RequestError as e:
         print(str(e))
 
-# def graf_of_candles():
-#     try:
-#         with Client(tokens.test_token()) as client:
-#             r = client.market_data.get_candles(
-#                 figi='USD000UTSTOM',
-#                 from_=datetime.utcnow() - timedelta(days=7),
-#                 to=datetime.utcnow(),
-#                 interval=CandleInterval.CANDLE_INTERVAL_HOUR
-#             )
-#             df = create_df(r.candles)
-#             df['ema'] = ema_indicator(close=df['close'], window=9)
-#             print(df[['time', 'close', 'ema']].tail(30))
-#             ax=df.plot(x='time', y='close')
-#             df.plot(ax=ax, x='time', y='ema')
-#             plt.show()
-#
-#     except RequestError as e:
-#         print(str(e))
+def graf_of_candles():
+    try:
+        with Client(tokens.test_token()) as client:
+            r = client.market_data.get_candles(
+                figi='USD000UTSTOM',
+                from_=datetime.utcnow() - timedelta(days=7),
+                to=datetime.utcnow(),
+                interval=CandleInterval.CANDLE_INTERVAL_HOUR
+            )
+            df = create_df(r.candles)
+            df['ema'] = ema_indicator(close=df['close'], window=9)
+            print(df[['time', 'close', 'ema']].tail(30))
+            ax=df.plot(x='time', y='close')
+            df.plot(ax=ax, x='time', y='ema')
+            plt.show()
+
+    except RequestError as e:
+        print(str(e))
 
 
 def create_df(candles: [HistoricCandle]):
@@ -65,5 +65,5 @@ def create_df(candles: [HistoricCandle]):
 def cast_money(v):
     return v.units + v.nano / 1e9
 
-
-graf_of_candles()
+if __name__ == '__main__':
+    graf_of_candles()

@@ -11,6 +11,7 @@ t1 = '^GSPC'
 t2 = 'acn'
 
 
+
 def ts_4_2(market_ticker, stock_ticker, stime='2022-01-01', ftime=None, interval='1wk'):
 
 

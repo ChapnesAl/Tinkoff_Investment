@@ -255,15 +255,15 @@ xf = ['APLE', 'BAC', 'AAL', 'ABT', 'ALB']
 
 
 """With beta"""
-
-print(Str4_2_2('^GSPC',   b_15_plus, stime='2018-05-01', ftime='2020-01-01', interval='1wk').sum_results())
-print(Str4_2_2('^GSPC', b_15_plus_a, stime='2019-05-01', ftime='2020-06-01', interval='1wk').sum_results())
-print(Str4_2_2('^GSPC', b_15_plus_b, stime='2019-10-01', ftime='2021-01-01', interval='1wk').sum_results())
-print(Str4_2_2('^GSPC', b_15_plus_c, stime='2020-05-01', ftime='2021-10-01', interval='1wk').sum_results())
-# # print(Str4_2_2('^GSPC', xe, stime='2020-05-01', ftime='2021-10-01', interval='1wk').get_counts())
-print(Str4_2_2('^GSPC', b_15_plus_d, stime='2021-06-01', ftime='2022-04-03', interval='1wk').sum_results())
-# print(Str4_2_2('^GSPC', 'APLE', stime='2021-06-01',  ftime='2022-04-03', interval='1wk').get_counts())
-print(Str4_2_2('^GSPC', b_15_plus_e, stime='2022-01-01', interval='1wk').sum_results())
+#
+# print(Str4_2_2('^GSPC',   b_15_plus, stime='2018-05-01', ftime='2020-01-01', interval='1wk').sum_results())
+# print(Str4_2_2('^GSPC', b_15_plus_a, stime='2019-05-01', ftime='2020-06-01', interval='1wk').sum_results())
+# print(Str4_2_2('^GSPC', b_15_plus_b, stime='2019-10-01', ftime='2021-01-01', interval='1wk').sum_results())
+# print(Str4_2_2('^GSPC', b_15_plus_c, stime='2020-05-01', ftime='2021-10-01', interval='1wk').sum_results())
+# # # print(Str4_2_2('^GSPC', xe, stime='2020-05-01', ftime='2021-10-01', interval='1wk').get_counts())
+# print(Str4_2_2('^GSPC', b_15_plus_d, stime='2021-06-01', ftime='2022-04-03', interval='1wk').sum_results())
+# # print(Str4_2_2('^GSPC', 'APLE', stime='2021-06-01',  ftime='2022-04-03', interval='1wk').get_counts())
+# print(Str4_2_2('^GSPC', b_15_plus_e, stime='2022-01-01', interval='1wk').sum_results())
 
 
 
@@ -271,4 +271,4 @@ print(Str4_2_2('^GSPC', b_15_plus_e, stime='2022-01-01', interval='1wk').sum_res
 # print(Str4_2_2('^GSPC', val_long_usd, stime='2022-01-01', interval='1wk').signals_without_gap())
 # print(Str4_2_2('^GSPC', 'aple', stime='2022-01-01', ftime='2022-08-14', interval='1wk').get_table())
 # print(Str4_2_2('^GSPC', 'aapl', stime='2022-01-01', ftime='2022-08-13', interval='1wk').get_table())
-# print(Str4_2_2('^GSPC', 'aapl', stime='2022-01-01', interval='1wk').get_table())
+print(Str4_2_2('^GSPC', 'gthx', stime='2022-01-01', interval='1wk').get_table())

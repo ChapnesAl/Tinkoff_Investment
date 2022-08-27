@@ -273,3 +273,6 @@ print(Str4_2_2('^GSPC', b_15_plus, stime='2022-01-01', interval='1wk').signals_w
 # print(Str4_2_2('^GSPC', 'aapl', stime='2022-01-01', ftime='2022-08-13', interval='1wk').get_table())
 # print(Str4_2_2('^GSPC', 'gthx', stime='2022-01-01', interval='1wk').get_table())
 # print(Str4_2_2('^GSPC', 'gthx', stime='2022-01-01', interval='1wk').signals_without_gap())
+
+
+""" Str 1 0 0"""

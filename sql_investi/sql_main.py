@@ -1,7 +1,7 @@
 import psycopg2
-from sql_config import host, user, password, db_name
-from sql_ask_collection import get_data, insert_data, create_table, get_full_table, del_row_cond, del_all
-from sql_base_asks import ins_tinc_ticr
+from .sql_configs import host, user, password, db_name
+from .sql_ask_collection import get_data, insert_data, create_table, get_full_table, del_row_cond, del_all
+from .sql_base_asks import ins_tinc_ticr, add_tests_results
 
 
 
@@ -28,6 +28,7 @@ def main_sql_ask():
         # del_all(connection)
         # del_row_cond(connection)
         # create_table(connection)
+        # add_tests_results(connection, stat_results)
         get_full_table(connection)
 
 

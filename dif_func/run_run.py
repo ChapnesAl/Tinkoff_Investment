@@ -1,4 +1,5 @@
 import pandas as pd
+from sql_investi.sql_str_tests import Db_str_tests
 from result_mdl.play_ground_str1 import Str1_0_0, Str1_0_1
 from result_mdl.play_ground_str3 import Str3_0_0, Str3_0_1, Str3_1_1
 from result_mdl.play_ground_str4 import Str4_0_0, Str4_1_1, Str4_2_2
@@ -229,8 +230,9 @@ def pack_analyse(pack_st_op):
         l[i] = for_test(pack_st_op[i])
     return tuple(l)
 
-print(pack_analyse(p1_m1))
-# print(for_test(m1_m))
+Db_str_tests().insert_datas(for_test(m1_m))
+
+# print(type(float(Str1_0_0('^GSPC', ['AAPL', 'T'], stime='2018-05-01', ftime='2020-01-01', interval='1wk', str_opt=m1_m).sum_results())))
 
 
 # def for_test(st_o):

@@ -1,8 +1,6 @@
 
 
 
-
-
 def insert_data(connect):
     with connect.cursor() as cursor:
         cursor.execute(
@@ -25,6 +23,8 @@ def get_full_table(connect):
             """SElECT * FROM test_100;"""
         )
         print(cursor.fetchall())
+
+
 
 def del_row_cond(connect):
     with connect.cursor() as cursor:

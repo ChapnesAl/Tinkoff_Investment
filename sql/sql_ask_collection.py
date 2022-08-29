@@ -1,16 +1,13 @@
 
-connection = None
 
 
-# def get_data():
-#     r = """SElECT figi FROM tickers WHERE ticker = 'GGG';"""
-#     return r
+
 
 def insert_data(connect):
     with connect.cursor() as cursor:
         cursor.execute(
-            """INSERT INTO tickers (ticker, figi)
-            VALUES ('BBB', 'rasd');"""
+            f"""INSERT INTO tickers (ticker, figi)
+            VALUES {(('GOG', 'rude'), ('GOG', 'rade'))} ;"""
         )
         print("[INFO] Data was successfully inserted")
 
@@ -29,16 +26,31 @@ def get_full_table(connect):
         )
         print(cursor.fetchall())
 
+def del_row_cond(connect):
+    with connect.cursor() as cursor:
+        cursor.execute(
+            """DELETE FROM tickers WHERE ticker = 'GGG';"""
+        )
+        print("[INFO] Data was successfully deleted")
+
+def del_all(connect):
+    with connect.cursor() as cursor:
+        cursor.execute(
+            """DELETE FROM tickers;"""
+        )
+        print("[INFO] Data was successfully deleted")
+
 def create_table(connect):
     with connect.cursor() as cursor:
-        with connection.cursor() as cursor:
-            cursor.execute(
-                """CREATE TABLE tickers(
+        cursor.execute(
+            """CREATE TABLE tickers(
                 id serial PRIMARY KEY,
                 ticker varchar(20) NOT NULL,
                 figi varchar(20) NOT NULL);"""
-            )
-            print("[INFO] Table created successfully")
+        )
+        print("[INFO] Table created successfully")
 
 
-# print(get_data())
+if __name__ == '__main__':
+
+    print(get_data())

@@ -99,4 +99,4 @@ def ts_4_2(market_ticker, stock_ticker, stime='2022-01-01', ftime=None, interval
     return gf
 
 if __name__ == '__main__':
-    print(ts_4_2(t1, t2))
+    print(ts_4_2(t1, t2, interval='1d'))

@@ -143,4 +143,4 @@ def en_4_2(table):
 
 
 if __name__ == '__main__':
-    print(en_4_2(ts_4_2('^GSPC','Aple')))
+    print(en_4_2(ts_4_2('^GSPC', 'Aple', interval='1d')))

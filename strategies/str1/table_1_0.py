@@ -12,7 +12,7 @@ t2 = 'acn'
 
 
 
-def ts_1_0(market_ticker, stock_ticker, stime='2022-01-01', ftime=None, interval='1wk'):
+def ts_1_0(market_ticker, stock_ticker, stime='2022-01-01', ftime=None, interval='1d'):
 
 
 
@@ -99,4 +99,4 @@ def ts_1_0(market_ticker, stock_ticker, stime='2022-01-01', ftime=None, interval
     return gf
 
 if __name__ == '__main__':
-    print(ts_1_0(t1, t2))
+    print(ts_1_0(t1, t2, interval='1d'))

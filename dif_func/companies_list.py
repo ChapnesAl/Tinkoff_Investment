@@ -25,6 +25,7 @@ def get_companies():
     return df
 
 
+
 def some_column(s):
     s = {
         'ticker': s.ticker,
@@ -44,6 +45,22 @@ def some_column(s):
 def cast_money(v):
     return v.units + v.nano / 1e9
 
+
+def get_tick_figi():
+    with Client(tokens.test_token()) as client:
+        r = client.instruments.shares(instrument_status=InstrumentStatus.INSTRUMENT_STATUS_BASE)
+        df = pd.DataFrame([tick_figi(s) for s in r.instruments])
+        lists =  ([tuple(s) for s in df.values])
+    return tuple(lists)
+
+def tick_figi(s):
+    s = {
+        'ticker': s.ticker,
+        'figi': s.figi,
+    }
+    return s
+
 if __name__ == '__main__':
-    get_companies()
+    # get_companies()
     # get_etfs()
+    print(get_tick_figi())

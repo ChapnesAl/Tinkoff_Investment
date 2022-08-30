@@ -2,7 +2,7 @@
 from dif_func.companies_list import get_tick_figi
 
 
-def ins_tinc_ticr(connect):
+def ins_tinc_tic(connect):
     with connect.cursor() as cursor:
         y = get_tick_figi()
         for i in y:

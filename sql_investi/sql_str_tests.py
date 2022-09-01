@@ -2,7 +2,6 @@ import psycopg2
 # from sql_config import host, user, password, db_name
 # from sql_ask_collection import get_data, insert_data, create_table, get_full_table, del_row_cond, del_all
 # from sql_base_asks import ins_tinc_ticr
-import self as self
 
 
 class Db_str_tests:

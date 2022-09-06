@@ -32,30 +32,6 @@ def en_1_0(table, s_o):
 
                 elif eval(s_o):
                     r[i] = 'Long'
-                # elif gf_copy.iloc[ind[i], 2] > (gf_copy.iloc[ind[i] - 1, 2] + 1.5)\
-                #         and gf_copy.iloc[ind[i], 2] > 1:
-                #     r[i] = 'Long'
-
-
-                # elif gf_copy.iloc[ind[i], 2] < (gf_copy.iloc[ind[i] - 1, 2] + 1.5) and gf_copy.iloc[ind[i] - 1, 2] < gf_copy.iloc[ind[i] - 2, 2]\
-                #         and gf_copy.iloc[ind[i], 2] < -4:
-                #     r[i] = 'Short'
-
-                # elif gf_copy.iloc[ind[i], 3] < (gf_copy.iloc[ind[i] - 1, 3] + 1.5):
-                #     r[i] = 'Short'
-
-                #without
-                # elif gf_copy.iloc[ind[i], 2] < (gf_copy.iloc[ind[i] - 1, 2] - 1.5):
-                #     r[i] = 'Long'
-
-
-
-
-                # without
-                # elif gf_copy.iloc[ind[i], 2] < (gf_copy.iloc[ind[i] - 1, 2] + 1.5) and gf_copy.iloc[ind[i] - 1, 2] > \
-                #         gf_copy.iloc[ind[i] - 2, 2] \
-                #         and gf_copy.iloc[ind[i], 2] < -4:
-                #     r[i] = 'Short'
 
                 else:
                     r[i] = '0'

@@ -1,29 +1,28 @@
 import psycopg2
-# from sql_config import host, user, password, db_name
-# from sql_ask_collection import get_data, insert_data, create_table, get_full_table, del_row_cond, del_all
-# from sql_base_asks import ins_tinc_ticr
+from sql_investi.sql_configs import host, user, password, db_name
+
 
 
 class Db_str_tests:
     def __init__(self):
         self.connection = psycopg2.connect(
-            host="127.0.0.1",
-            user="postgres",
-            password="123234",
-            database="trading_bot"
+            host=host,
+            user=user,
+            password=password,
+            database=db_name
         )
         self.connection.autocommit = True
         self.cursor = self.connection.cursor()
 
     def get_full_table(self):
         with self.connection:
-            result = self.cursor.execute("""SElECT * FROM test_100;""")
+            result = self.cursor.execute("""SElECT * FROM test_101;""")
             return result, print(self.cursor.fetchall())
 
     def insert_line_data(self, values):
         with self.connection:
             result = self.cursor.execute(
-                f"""INSERT INTO test_100 (p18_05_20_01, p19_05_20_06, p19_10_21_01,
+                f"""INSERT INTO test_102 (p18_05_20_01, p19_05_20_06, p19_10_21_01,
                                         p20_05_21_10, p21_06_22_04, p22_01, option)
                     VALUES {values}"""
             )
@@ -34,7 +33,7 @@ class Db_str_tests:
             y = pack
             for i in y:
                 result = self.cursor.execute(
-                    f"""INSERT INTO test_100 (p18_05_20_01, p19_05_20_06, p19_10_21_01,
+                    f"""INSERT INTO test_102 (p18_05_20_01, p19_05_20_06, p19_10_21_01,
                                         p20_05_21_10, p21_06_22_04, p22_01, option)
                     VALUES {i}"""
                 )
@@ -47,7 +46,20 @@ class Db_str_tests:
             )
         return result, print("[INFO] Data was successfully deleted")
 
+    def create_table(self):
+        with self.connection:
+            result = self.cursor.execute(
+                """CREATE TABLE test_102(
+                                    id serial PRIMARY KEY,
+                                    p18_05_20_01 numeric NOT NULL,
+                                    p19_05_20_06 numeric NOT NULL,
+                                    p19_10_21_01 numeric NOT NULL,
+                                    p20_05_21_10 numeric NOT NULL,
+                                    p21_06_22_04 numeric NOT NULL,
+                                    p22_01 numeric NOT NULL,
+                                    option varchar(200) NOT NULL);"""
+            )
+            return result, print("[INFO] Table created successfully")
 
 if __name__ == '__main__':
-    Db_str_tests().insert_datas()
     Db_str_tests().get_full_table()

@@ -93,6 +93,7 @@ class MyOper:
         r: OperationsResponse = self.client.operations.get_operations(
             account_id=account_id,
             from_=datetime(2022,1,1),
+            # from_=datetime.utcnow() - timedelta(days=1),
             to=datetime.utcnow()
         )
 

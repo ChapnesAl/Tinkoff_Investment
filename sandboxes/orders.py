@@ -13,7 +13,7 @@ pd.set_option('display.width', 1000)
 
 fiqi = 'BBG004730N88' # SBER
 
-def buy_order():
+def buy_order(fiqi):
     print('Песочница Тинькоф')
 
     with Client(tokens.sandbox_token()) as cl:
@@ -29,7 +29,7 @@ def buy_order():
         )
         pprint(r)
 
-def sell_order():
+def sell_order(fiqi):
     print('Песочница Тинькоф')
 
     with Client(tokens.sandbox_token()) as cl:
@@ -108,6 +108,8 @@ def close_active_orders(acc_id):
 
 if __name__ == '__main__':
     # buy_limit_order('BBG000BSJK37', tokens.test_token())
+    # buy_order('BBG000BSJK37')
+    sell_order('BBG000BSJK37')
     # sell_limit_order('BBG000BSJK37', tokens.test_token())
-    close_active_orders(acc_id.acc_a)
-    pprint(get_active_orders(acc_id.acc_a))
+    # close_active_orders(acc_id.acc_a)
+    # pprint(get_active_orders(acc_id.acc_a))

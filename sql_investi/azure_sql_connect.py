@@ -1,0 +1,1 @@
+# host=stockschapnes.postgres.database.azure.com port=5432 dbname={your_database} user=chapnes password={your_password} sslmode=require

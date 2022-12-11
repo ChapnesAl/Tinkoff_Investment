@@ -22,8 +22,8 @@ def get_full_table(connect):
         cursor.execute(
             """SElECT * FROM test_100;"""
         )
-        print(cursor.fetchall())
-
+        tupples = cursor.fetchall()
+        return tupples
 
 
 def del_row_cond(connect):

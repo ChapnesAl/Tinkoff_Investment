@@ -1,7 +1,9 @@
 import psycopg2
-from .sql_configs import host, user, password, db_name
-from .sql_ask_collection import get_data, insert_data, create_table, get_full_table, del_row_cond, del_all
-from .sql_base_asks import ins_tinc_tic
+from sql_investi.sql_configs import host, user, password, db_name
+from sql_investi.sql_ask_collection import get_data, insert_data, create_table, get_full_table, del_row_cond, del_all
+from sql_investi.sql_base_asks import ins_tinc_tic
+
+
 
 
 
@@ -23,12 +25,13 @@ def main_sql_ask():
             )
             print(f"Server version: {cursor.fetchone()}")
 
-        # insert_data(connection)
-        # ins_tinc_tic(connection)
-        # del_all(connection)
-        # del_row_cond(connection)
-        # create_table(connection)
-        get_full_table(connection)
+        result = insert_data(connection)
+        # result = ins_tinc_tic(connection)
+        # result = del_all(connection)
+        # result = del_row_cond(connection)
+        # result = create_table(connection)
+        result = get_full_table(connection)
+        # result = get_data(connection)
 
 
     except Exception as _ex:
@@ -37,7 +40,7 @@ def main_sql_ask():
         if connection:
             connection.close()
             print("[INFO] PostgreSQL connection close")
-
+    return result
 
 if __name__ == '__main__':
     main_sql_ask()

@@ -29,7 +29,7 @@ def get_full_table():
 def create_table():
     with connection:
         result = cursor.execute(
-            """CREATE TABLE test_102(
+            """CREATE TABLE test_100(
                                     id serial PRIMARY KEY,
                                     p18_05_20_01 numeric NOT NULL,
                                     p19_05_20_06 numeric NOT NULL,

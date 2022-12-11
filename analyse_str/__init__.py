@@ -1,0 +1,1 @@
+from analyse_str import market_divir

@@ -30,8 +30,7 @@ def ts_1_0(market_ticker, stock_ticker, stime='2022-01-01', ftime=None, interval
 
     gf = pd.DataFrame(get_data_from_ticker(market_ticker, stime, ftime, interval))
     sf = pd.DataFrame(get_data_from_ticker(stock_ticker, stime, ftime, interval))
-    extracted_col = sf[stock_ticker]
-    gf[stock_ticker] = extracted_col
+    gf[stock_ticker] = sf[stock_ticker]
 
     def add_percent_update(tick):
         """ date stock's or market's update"""

@@ -1,5 +1,5 @@
 import psycopg2
-from sql_investi.sql_configs import host, user, password, db_name
+from sql_investi.sql_configs import host, user, password, dbname, port, sslmode
 from sql_investi.sql_ask_collection import get_data, insert_data, create_table, get_full_table, del_row_cond, del_all
 from sql_investi.sql_base_asks import ins_tinc_tic
 
@@ -15,7 +15,9 @@ def main_sql_ask():
             host=host,
             user=user,
             password=password,
-            database=db_name
+            port=port,  # if we use the localhost we don't have to use this parameter
+            sslmode=sslmode,  # if we use the localhost we don't have to use this parameter
+            database=dbname
         )
         connection.autocommit = True
 
@@ -30,7 +32,7 @@ def main_sql_ask():
         # result = del_all(connection)
         # result = del_row_cond(connection)
         # result = create_table(connection)
-        result = get_full_table(connection)
+        # result = get_full_table(connection)
         # result = get_data(connection)
 
 

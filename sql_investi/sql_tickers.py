@@ -1,5 +1,5 @@
 import psycopg2
-from sql_investi.sql_configs import host, user, password, db_name
+from sql_investi.sql_configs import host, user, password, dbname, port, sslmode
 
 
 class Db_figi_tick:
@@ -8,7 +8,9 @@ class Db_figi_tick:
             host=host,
             user=user,
             password=password,
-            database=db_name
+            port=port,  # if we use the localhost we don't have to use this parameter
+            sslmode=sslmode, # if we use the localhost we don't have to use this parameter
+            database=dbname
         )
         self.connection.autocommit = True
         self.cursor = self.connection.cursor()

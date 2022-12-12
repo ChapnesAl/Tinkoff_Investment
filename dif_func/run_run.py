@@ -1,4 +1,5 @@
 import pandas as pd
+from tokens import iss_token_full
 from sql_investi.sql_str_tests import Db_str_tests
 from result_mdl.play_ground_str1 import Str1_0_0, Str1_0_1
 from result_mdl.play_ground_str3 import Str3_0_0, Str3_0_1, Str3_1_1
@@ -10,6 +11,7 @@ from tickers import snp_b_13_15, snp_b_13_15a, snp_b_13_15b, snp_b_13_15c, snp_b
 from tickers import snp_b_11_13, snp_b_11_13a, snp_b_11_13b, snp_b_11_13c, snp_b_11_13d, snp_b_11_13e
 from tickers import snp_b_09_11, snp_b_09_11a, snp_b_09_11b, snp_b_09_11c, snp_b_09_11d, snp_b_09_11e
 from tickers import b_15_plus, b_15_plus_a, b_15_plus_b, b_15_plus_c, b_15_plus_d, b_15_plus_e
+
 
 
 """ Import Strategy Option"""
@@ -84,8 +86,12 @@ def pack_analyse(slist, pack_st_op):
 # print(id(a))
 # print(id(aa))
 
+# p1_m1, p2_m1, p3_m1, p4_m1, p5_m1, p6_m1, p7_mr, p8_mr, p9_mr, p10_mr,\
+#      mrAM_MmrB15_a_mrAM1_a_mrBL05, p1_l1, p2_l1, p3_l1, p4_l1, p5_l1, p6_l1, p7_lr, p8_lr, p9_lr
+
+
 # Db_str_tests().insert_line_data(for_test(snp_b_15, mrAM_MmrB15_a_mrAM1_a_mrBL05))
-Db_str_tests().insert_pack_data(pack_analyse(snp_b_15, p5_l1))
+Db_str_tests().insert_pack_data(pack_analyse(snp_b_15, p3_m1))
 # Db_str_tests().del_all()
 # Db_str_tests().create_table()
 # Db_str_tests().get_full_table()

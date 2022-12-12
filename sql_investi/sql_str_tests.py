@@ -1,5 +1,5 @@
 import psycopg2
-from sql_investi.sql_configs import host, user, password, db_name
+from sql_investi.sql_configs import host, user, password, dbname, sslmode, port
 
 
 
@@ -9,20 +9,22 @@ class Db_str_tests:
             host=host,
             user=user,
             password=password,
-            database=db_name
+            port=port,  # if we use the localhost we don't have to use this parameter
+            sslmode=sslmode,  # if we use the localhost we don't have to use this parameter
+            database=dbname
         )
         self.connection.autocommit = True
         self.cursor = self.connection.cursor()
 
     def get_full_table(self):
         with self.connection:
-            result = self.cursor.execute("""SElECT * FROM test_101;""")
+            result = self.cursor.execute("""SElECT * FROM test_100_plus;""")
             return result, print(self.cursor.fetchall())
 
     def insert_line_data(self, values):
         with self.connection:
             result = self.cursor.execute(
-                f"""INSERT INTO test_102 (p18_05_20_01, p19_05_20_06, p19_10_21_01,
+                f"""INSERT INTO test_100_plus (p18_05_20_01, p19_05_20_06, p19_10_21_01,
                                         p20_05_21_10, p21_06_22_04, p22_01, option)
                     VALUES {values}"""
             )
@@ -33,7 +35,7 @@ class Db_str_tests:
             y = pack
             for i in y:
                 result = self.cursor.execute(
-                    f"""INSERT INTO test_102 (p18_05_20_01, p19_05_20_06, p19_10_21_01,
+                    f"""INSERT INTO test_100_plus (p18_05_20_01, p19_05_20_06, p19_10_21_01,
                                         p20_05_21_10, p21_06_22_04, p22_01, option)
                     VALUES {i}"""
                 )

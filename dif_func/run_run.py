@@ -15,8 +15,10 @@ from tickers import b_15_plus, b_15_plus_a, b_15_plus_b, b_15_plus_c, b_15_plus_
 
 
 """ Import Strategy Option"""
-from strategies.str_options import p1_m1, p2_m1, p3_m1, p4_m1, p5_m1, p6_m1, p7_mr, p8_mr, p9_mr, p10_mr,\
-     mrAM_MmrB15_a_mrAM1_a_mrBL05, p1_l1, p2_l1, p3_l1, p4_l1, p5_l1, p6_l1, p7_lr, p8_lr, p9_lr
+from strategies.str_options import p1_mr, p2_mr, p3_mr, p4_mr, p5_mr, p6_mr, p7_mr, p8_mr, p9_mr, p10_mr,\
+     mrAM_MmrB15_a_mrAM1_a_mrBL05, p1_lr, p2_lr, p3_lr, p4_lr, p5_lr, p6_lr, p7_lr, p8_lr, p9_lr,\
+    p1_plus1
+
 
 pd.set_option('display.max_rows', 1000)
 pd.set_option('display.max_columns', 500)
@@ -29,6 +31,7 @@ snp_b_15 = ['COTY', 'CCL', 'JWN', 'DXC', 'HAL', 'SLB', 'RCL', 'BFH', 'DVN', 'OXY
             'PARA', 'FCX', 'ALK', 'WDC', 'C', 'MOS', 'OKE', 'DHI', 'BBY', 'MPC', 'AMD', 'PRU', 'EXPE', 'EOG', 'VLO',
             'MAR', 'HCA', 'ALB']
 
+more_stocks = ['EHTH', 'CCL', 'UAA', 'GPS', 'MAC', 'PUMP', 'ACH', 'ET', 'VIPS', 'PLTR', 'PTON', 'PCG', 'OII', 'PAGS', 'GT', 'F', 'HBAN', 'IOVA', 'TWOU', 'HPE', 'LYFT', "HEAR", "SNAP", "TAK", "XRX", 'NTNX', 'HA', 'CLF', 'PLUG', 'ACAD',  'SHI', 'IVZ', 'M', 'WU', 'M', 'CNK', 'KMI', 'TRIP', 'LEVI', 'KEY', 'CHX', 'IBN', 'CHGG', 'RF', 'WB', 'JWN', 'LTHM', 'PINS', 'ANAB', 'T', 'UPWK', 'UBER', 'VREX', 'BJRI', 'BILI', 'SAVE', 'BEN', 'PARA', 'YY', 'FCX', 'BKR', 'RRC', 'TTM', 'HAL', 'CNP', 'SMAR', 'DXC', 'PPC', 'EVC', 'WMB', 'HPQ', 'DAL', 'USFD', 'BAC', 'APA', 'CLW', 'SLB', 'HOG', 'SPR', 'GM', 'PLAY', 'SAGE', 'BYND', 'LVS', 'Z', 'NRG', 'RCL', 'BSX', 'CFG', 'LI', 'WBA', 'KHC', 'EQT', 'CHEF', 'TWTR', 'INTC', 'TDOC', 'IRBT', 'WRK', 'UAL', 'LUV', 'BTI' , 'BFH', 'IRBT', 'BK', 'ALK', 'CMCSA', 'WFC', 'MO', 'ARWR', 'EQT', 'CSCO', 'VZ', 'KR', 'TTD', 'NEM', 'EBAY', 'AYX', 'IRM', 'PTR', 'NET', 'USB', 'CPRI', 'WDC', 'OVV', 'SNY', 'W', 'PFGC', 'MOS', 'TTE', 'AIG', 'C', 'VTR', 'DOW', 'MAS', 'BUD', 'NVAX', 'CAH', 'SIG', 'COIN', 'DVN', 'PVH', 'OKE', 'TJX', 'GILD', 'MET', 'REGI', 'MU', 'OXY', 'MDLZ', 'KO', 'JD', 'WYNN', 'EIX', 'DOCU', 'SCHW', 'HIG', 'CLR', 'OMC', 'NTAP', 'MTCH', 'BALL', 'BBY', 'SO', 'SQ', 'BMY', 'ORCL', 'HAS', 'STX', 'DHI', 'ROST', 'D', 'ADM', 'ATVI', 'INCY', 'FSLR', 'NEE', 'SBUX', 'MS', 'H', 'TWLO']
 
 
 
@@ -86,12 +89,12 @@ def pack_analyse(slist, pack_st_op):
 # print(id(a))
 # print(id(aa))
 
-# p1_m1, p2_m1, p3_m1, p4_m1, p5_m1, p6_m1, p7_mr, p8_mr, p9_mr, p10_mr,\
-#      mrAM_MmrB15_a_mrAM1_a_mrBL05, p1_l1, p2_l1, p3_l1, p4_l1, p5_l1, p6_l1, p7_lr, p8_lr, p9_lr
+# p1_mr, p2_mr, p3_mr, p4_mr, p5_mr, p6_mr, p7_mr, p8_mr, p9_mr, p10_mr,\
+#      mrAM_MmrB15_a_mrAM1_a_mrBL05, p1_lr, p2_lr, p3_lr, p4_lr, p5_lr, p6_lr, p7_lr, p8_lr, p9_lr,    p1_plus1
 
 
 # Db_str_tests().insert_line_data(for_test(snp_b_15, mrAM_MmrB15_a_mrAM1_a_mrBL05))
-Db_str_tests().insert_pack_data(pack_analyse(snp_b_15, p6_l1))
+Db_str_tests().insert_pack_data(pack_analyse(more_stocks, p1_plus1))
 # Db_str_tests().del_all()
 # Db_str_tests().create_table()
 # Db_str_tests().get_full_table()

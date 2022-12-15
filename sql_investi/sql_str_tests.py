@@ -18,13 +18,13 @@ class Db_str_tests:
 
     def get_full_table(self):
         with self.connection:
-            result = self.cursor.execute("""SElECT * FROM test_100_plus;""")
+            result = self.cursor.execute("""SElECT * FROM test_100_plus1;""")
             return result, print(self.cursor.fetchall())
 
     def insert_line_data(self, values):
         with self.connection:
             result = self.cursor.execute(
-                f"""INSERT INTO test_100_plus (p18_05_20_01, p19_05_20_06, p19_10_21_01,
+                f"""INSERT INTO test_100_plus1 (p18_05_20_01, p19_05_20_06, p19_10_21_01,
                                         p20_05_21_10, p21_06_22_04, p22_01, option)
                     VALUES {values}"""
             )
@@ -35,7 +35,7 @@ class Db_str_tests:
             y = pack
             for i in y:
                 result = self.cursor.execute(
-                    f"""INSERT INTO test_100_plus (p18_05_20_01, p19_05_20_06, p19_10_21_01,
+                    f"""INSERT INTO test_100_plus1 (p18_05_20_01, p19_05_20_06, p19_10_21_01,
                                         p20_05_21_10, p21_06_22_04, p22_01, option)
                     VALUES {i}"""
                 )

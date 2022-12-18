@@ -88,5 +88,5 @@ Db_str_tests().insert_pack_data(pack_analyse(snp_b_15, p2_mr))
 # Db_str_tests().create_table()
 # Db_str_tests().get_full_table()
 
-9
+
 # Str1_0_0('^GSPC', snp_b_09_2, stime='2022-06-01', interval='1wk', str_opt="gf_copy.iloc[ind[i], 2] > (gf_copy.iloc[ind[i] + 1, 2] - 0)").signals()

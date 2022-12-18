@@ -1,5 +1,5 @@
 import pandas as pd
-from strategies.str4.table_4_2 import ts_4_2
+# from strategies.str4.table_4_2 import ts_4_2
 
 t1 = '^GSPC'
 t2 = 'HPE'

@@ -350,8 +350,22 @@ p9_lr = (mrAM_LmrB15_a_mrAM1_a_mrBM_05, mrAM_LmrB15_a_mrAM1_a_mrBM_1, mrAM_LmrB1
 
 
 
-p1_plus1 =(m1_m_25, m1_m2, m1_m2_m2, m1_m25, m1_m15, m1_m1, m1_m4, m1_m3, m1_m35, m1_m_15,
-           m1_l_25, mrAM_LmrB15_a_mrAM1_a_mrBL2, mrAM_MmrB15_a_mrAM1_a_mrBM3, mrAM_MmrB15_a_mrAM1_a_mrBM35, mrAM_MmrB15_a_mrAM1_a_mrBM25, mrAM_MmrB15_a_mrAM1_a_mrBM2)
+p1_plus1 =(m1_m_25, m1_m2)
+
+p2_plus1 = (m1_m2_m2, m1_m25)
+
+p3_plus1 = (m1_m15, m1_m1)
+
+p4_plus1 = (m1_m4, m1_m3)
+
+p5_plus1 = (m1_m35, m1_m_15)
+
+p6_plus1 = (m1_l_25, mrAM_LmrB15_a_mrAM1_a_mrBL2)
+
+p7_plus1 = (mrAM_MmrB15_a_mrAM1_a_mrBM3, mrAM_MmrB15_a_mrAM1_a_mrBM35)
+
+p8_plus1 = (mrAM_MmrB15_a_mrAM1_a_mrBM25, mrAM_MmrB15_a_mrAM1_a_mrBM2)
+
 
 
 if __name__ == '__main__':

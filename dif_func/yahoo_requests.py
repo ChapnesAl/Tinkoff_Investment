@@ -55,4 +55,6 @@ if __name__ == '__main__':
     # print(sustainability())
     # print(data)
     # pprint(info())
-    print(Yahoo_resp('AAPL').get_history(interval='1wk'))
+    # print(Yahoo_resp('AAPL').get_history(interval='1wk'))
+    print(Yahoo_resp('AAPL').get_history())
+

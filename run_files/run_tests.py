@@ -83,7 +83,7 @@ def pack_analyse(slist, pack_st_op):
 
 
 # Db_str_tests().insert_line_data(for_test(snp_b_15, mrAM_MmrB15_a_mrAM1_a_mrBL05))
-Db_str_tests().insert_pack_data(pack_analyse(snp_b_15, p3_lr))
+Db_str_tests().insert_pack_data(pack_analyse(snp_b_15, p4_lr))
 # Db_str_tests().del_all()
 # Db_str_tests().create_table()
 # Db_str_tests().get_full_table()

@@ -3,9 +3,8 @@ from strategies.str_options_4column import m1_m
 
 
 
-st_o = "gf_copy.iloc[ind[i], 2] > (gf_copy.iloc[ind[i] + 1, 2] - 0) and gf_copy.iloc[ind[i], 2] < 1000 and gf_copy.iloc[ind[i] - 1, 2] < 1000"
-st_o2 = "gf_copy.iloc[ind[i], 2] > gf_copy.iloc[ind[i] - 1, 2]"
-def en_1_0(table, s_o):
+
+def cr_en_1_0(table):
     gf = table
     stock_ticker = table.columns[1]
 
@@ -17,7 +16,7 @@ def en_1_0(table, s_o):
 
     index = get_index(gf)
 
-    def entrance(table, ind, tick, s_o):
+    def entrance(table, ind, tick):
         """ Long and Short"""
         gf_copy = table.copy(deep=True)
         gf_copy = gf_copy.astype({tick: str}, errors='ignore')
@@ -30,8 +29,13 @@ def en_1_0(table, s_o):
                                                gf_copy.iloc[3, 3], gf_copy.iloc[4, 3], gf_copy.iloc[5, 3]]:
                     r[i] = 0
 
-                elif eval(s_o):
+                elif gf_copy.iloc[ind[i], 2] < (gf_copy.iloc[ind[i] - 1, 2] - 2):
                     r[i] = 'Long'
+
+
+                elif gf_copy.iloc[ind[i], 2] > gf_copy.iloc[ind[i] - 1, 2] > gf_copy.iloc[ind[i] - 2, 2] > gf_copy.iloc[ind[i] - 3, 2]:
+                    r[i] = 'Short'
+
 
                 else:
                     r[i] = '0'
@@ -40,7 +44,7 @@ def en_1_0(table, s_o):
         return r
 
 
-    gf["Signal"] = entrance(gf, index, stock_ticker, s_o)
+    gf["Signal"] = entrance(gf, index, stock_ticker)
 
     def result_of_strategy(table, ind, tick):
         gf_copy = table.copy(deep=True)
@@ -66,5 +70,5 @@ def en_1_0(table, s_o):
 
 
 if __name__ == '__main__':
-    print(en_1_0(ts_1_0('^GSPC', 'Aple', interval='1wk'), m1_m))
+    print(cr_en_1_0(ts_1_0('^GSPC', 'ACN', interval='1wk')))
     # print(m1_m)

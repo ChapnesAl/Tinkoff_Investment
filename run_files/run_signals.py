@@ -2,6 +2,7 @@ import pandas as pd
 from tokens import iss_token_full
 from sql_investi.sql_str_tests import Db_str_tests
 from strategies.working_str.str100.w_play_ground_str1 import Str1_0_0
+from strategies.working_str.str100.w_play_ground_str1 import Cr_Str1_0_0
 from sql_investi.sql_str_tests import Db_str_tests
 
 
@@ -39,7 +40,10 @@ snp_b_09_2 = ['F', 'WU', 'KMI', 'CNP', 'HPQ', 'GLW', 'KHC', 'LUV', 'CMCSA', 'NRG
 'KEY', 'BAC', 'LVS', 'UAL', 'HOG', 'CFG', 'ALK', 'MAS', 'BBY', 'EMR', 'PSX', 'MS', 'LYB', 'RTX', 'RL', 'COP', 'AMAT', 'QRVO', 'SPG', 'DRI', 'BA', 'META', 'NVDA', 'FDX', 'ADSK', 'ABMD', 'GS',
 'GPS', 'XRX', 'BKR', 'PARA', 'FCX', 'ALK', 'WDC', 'C', 'MOS', 'OKE', 'DHI', 'BBY', 'MPC', 'AMD', 'PRU', 'EXPE', 'EOG', 'VLO', 'MAR', 'HCA', 'ALB']
 
-# snb
+
+
+coin_new_popular = ['MATIC-USD', 'WTRX-USD', 'DOT-USD', 'SHIB-USD', 'SOL-USD', 'HEX-USD', 'STETH-USD', 'UNI7083-USD', 'AVAX-USD', 'LEO-USD', 'TON11419-USD']
+
 
 """ Str 1 0 0"""
 
@@ -71,6 +75,9 @@ def for_test(slist):
 
 
 if __name__ == '__main__':
+
+
+    ''' STOCKS - chose first day as ftime of a new week for a signal week'''
     # print(Str1_0_0('^GSPC', snp_more_b_09).signals())
     # print(Str1_0_0('^GSPC', snp_b_09_11).signals())
     # print(Str1_0_0('^GSPC', snp_b_11_13).signals())
@@ -84,5 +91,8 @@ if __name__ == '__main__':
     # print(Str1_0_0('^GSPC', 'F', stime='2021-05-01', ftime='2022-12-10').get_table())
     print(Str1_0_0('^GSPC', 'HPE', stime='2021-05-01').get_table())
 
-
+    ''' CRYPTO - chose first day as ftime of a new week for a signal week'''
+    # print(Cr_Str1_0_0('BTC-USD', 'MATIC-USD', stime='2022-05-01', ftime='2022-12-25').get_table())
+    # print(Cr_Str1_0_0('BTC-USD', 'MATIC-USD', stime='2022-05-01').get_table())
+    # print(Cr_Str1_0_0('BTC-USD', coin_new_popular, stime='2021-05-01').signals())
     # print(for_test(snp_more_b_09))

@@ -7,10 +7,7 @@ from result_mdl.play_ground_str4 import Str4_0_0, Str4_1_1, Str4_2_2
 
 
 
-""" Import Strategy Option"""
-from strategies.str_options_2column import p1_mr, p2_mr, p3_mr, p4_mr, p5_mr, p6_mr, p7_mr, p8_mr, p9_mr, p10_mr,\
-     mrAM_MmrB15_a_mrAM1_a_mrBL05, p1_lr, p2_lr, p3_lr, p4_lr, p5_lr, p6_lr, p7_lr, p8_lr, p9_lr,\
-    p1_plus1, p2_plus1, p3_plus1, p4_plus1, p5_plus1, p6_plus1, p7_plus1, p8_plus1
+
 
 
 pd.set_option('display.max_rows', 1000)
@@ -21,7 +18,11 @@ mt = '^GSPC'  # '^GSPC', '^IXIC', '^RUT', '^DJI'
 st = 'T'
 
 btc = 'BTC-USD'
-coin_list = ['BTC-USD', 'ETH-USD', 'BNB-USD', 'XRP-USD', 'DOGE-USD', 'ADA-USD', 'MATIC-USD', 'DAI-USD', 'WTRX-USD', 'DOT-USD', 'TRX-USD', 'LTC-USD', 'SHIB-USD', 'SOL-USD', 'HEX-USD', 'STETH-USD', 'UNI7083-USD', 'AVAX-USD', 'LEO-USD', 'LINK-USD', 'TON11419-USD']
+coin_list = ['BTC-USD', 'ETH-USD', 'BNB-USD', 'XRP-USD', 'DOGE-USD', 'ADA-USD', 'MATIC-USD', 'WTRX-USD', 'DOT-USD', 'TRX-USD', 'LTC-USD', 'SHIB-USD', 'SOL-USD', 'HEX-USD', 'STETH-USD', 'UNI7083-USD', 'AVAX-USD', 'LEO-USD', 'LINK-USD', 'TON11419-USD']
+coin_old_popular = ['BTC-USD', 'ETH-USD', 'BNB-USD', 'XRP-USD', 'LINK-USD', 'DOGE-USD', 'ADA-USD', 'TRX-USD', 'LTC-USD']
+coin_new_popular = ['MATIC-USD', 'WTRX-USD', 'DOT-USD', 'SHIB-USD', 'SOL-USD', 'HEX-USD', 'STETH-USD', 'UNI7083-USD', 'AVAX-USD', 'LEO-USD', 'TON11419-USD']
+
+
 
 snp_b_15 = ['COTY', 'CCL', 'JWN', 'DXC', 'HAL', 'SLB', 'RCL', 'BFH', 'DVN', 'OXY', 'WYNN', 'PVH', 'GPS', 'XRX', 'BKR',
             'PARA', 'FCX', 'ALK', 'WDC', 'C', 'MOS', 'OKE', 'DHI', 'BBY', 'MPC', 'AMD', 'PRU', 'EXPE', 'EOG', 'VLO',
@@ -80,13 +81,15 @@ def pack_analyse(slist, pack_st_op):
     return tuple(l)
 
 
-# p1_mr, p2_mr, p3_mr, p4_mr, p5_mr, p6_mr, p7_mr, p8_mr, p9_mr, p10_mr,\
-#      mrAM_MmrB15_a_mrAM1_a_mrBL05, p1_lr, p2_lr, p3_lr, p4_lr, p5_lr, p6_lr, p7_lr, p8_lr, p9_lr,
-#      p1_plus1, p2_plus1, p3_plus1, p4_plus1, p5_plus1, p6_plus1, p7_plus1, p8_plus1
+""" Import Strategy Option"""
+from strategies.str_options_4column import p1_mr, p2_mr, p3_mr, p4_mr, p5_mr, p6_mr, p7_mr, p8_mr, p9_mr, p10_mr,\
+    p1_lr, p2_lr, p3_lr, p4_lr, p5_lr, p6_lr, p7_lr, p8_lr, p9_lr,\
+    p1_plus1, p2_plus1, p3_plus1, p4_plus1, p5_plus1, p6_plus1, p7_plus1, p8_plus1
+    # p1_cr_plus1
 
 
 # Db_str_tests().insert_line_data(for_test(snp_b_15, mrAM_MmrB15_a_mrAM1_a_mrBL05))
-Db_str_tests().insert_pack_data(pack_analyse(coin_list, p1_mr))
+Db_str_tests().insert_pack_data(pack_analyse(coin_list, p4_lr))
 # Db_str_tests().del_all()
 # Db_str_tests().create_table()
 # Db_str_tests().get_full_table()

@@ -348,6 +348,7 @@ p9_lr = (mrAM_LmrB15_a_mrAM1_a_mrBM_05, mrAM_LmrB15_a_mrAM1_a_mrBM_1, mrAM_LmrB1
           mrAM_LmrB15_a_mrAM1_a_mrBL_3, mrAM_LmrB15_a_mrAM1_a_mrBL_35)
 
 
+p1_cr_plus1 = (m1_l_25, m1_l_2, m1_l, m1_m_m_m, m1_m1_a_m1l_05)
 
 
 p1_plus1 =(m1_m_25, m1_m2)

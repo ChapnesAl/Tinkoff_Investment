@@ -1,10 +1,9 @@
 from strategies.str1.table_1_0 import ts_1_0
-from strategies.str_options import m1_m
+from strategies.str_options_4column import m1_m
 
 
 
-st_o = "gf_copy.iloc[ind[i], 2] > (gf_copy.iloc[ind[i] + 1, 2] - 0) and gf_copy.iloc[ind[i], 2] < 1000 and gf_copy.iloc[ind[i] - 1, 2] < 1000"
-st_o2 = "gf_copy.iloc[ind[i], 2] > gf_copy.iloc[ind[i] - 1, 2]"
+
 def en_1_0(table):
     gf = table
     stock_ticker = table.columns[1]
@@ -33,14 +32,11 @@ def en_1_0(table):
                 elif gf_copy.iloc[ind[i], 4] > (gf_copy.iloc[ind[i] - 1, 4] + 1.5):
                     r[i] = 'Long'
 
-                elif gf_copy.iloc[ind[i], 4] > (gf_copy.iloc[ind[i] - 1, 4] + 1):
-                    r[i] = 'Long'
 
                 elif gf_copy.iloc[ind[i], 4] < (gf_copy.iloc[ind[i] - 1, 4] + 1.5) and gf_copy.iloc[ind[i], 4] > 1 and gf_copy.iloc[ind[i] - 1, 4] < 2:
                     r[i] = 'Short'
 
-                elif gf_copy.iloc[ind[i], 4] > (gf_copy.iloc[ind[i] - 1, 4] + 1.5) and gf_copy.iloc[ind[i], 4] > 1 and gf_copy.iloc[ind[i] - 1, 4] > 3:
-                    r[i] = 'Short'
+
                 else:
                     r[i] = '0'
             except:

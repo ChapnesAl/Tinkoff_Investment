@@ -35,7 +35,7 @@ class Db_str_tests:
             y = pack
             for i in y:
                 result = self.cursor.execute(
-                    f"""INSERT INTO cr_test_100_common_cl_3 (p18_05_20_01, p19_05_20_06, p19_10_21_01,
+                    f"""INSERT INTO test_day_100_common_cl_4 (p18_05_20_01, p19_05_20_06, p19_10_21_01,
                                         p20_05_21_10, p21_06_22_04, p22_01, option)
                     VALUES {i}"""
                 )

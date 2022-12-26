@@ -64,12 +64,12 @@ def for_test(slist, st_o):
     s4 = list(slist)
     s5 = list(slist)
     s6 = list(slist)
-    a = Str1_0_0('BTC-USD', s1, stime='2018-05-01', ftime='2020-01-01', interval='1wk', str_opt=st_o).sum_results()
-    b = Str1_0_0('BTC-USD', s2, stime='2019-05-01', ftime='2020-06-01', interval='1wk', str_opt=st_o).sum_results()
-    c = Str1_0_0('BTC-USD', s3, stime='2019-10-01', ftime='2021-01-01', interval='1wk', str_opt=st_o).sum_results()
-    d = Str1_0_0('BTC-USD', s4, stime='2020-05-01', ftime='2021-10-01', interval='1wk', str_opt=st_o).sum_results()
-    e = Str1_0_0('BTC-USD', s5, stime='2021-06-01', ftime='2022-04-03', interval='1wk', str_opt=st_o).sum_results()
-    f = Str1_0_0('BTC-USD', s6, stime='2022-01-01', interval='1wk', str_opt=st_o).sum_results()
+    a = Str1_0_0('^GSPC', s1, stime='2018-05-01', ftime='2020-01-01', interval='1d', str_opt=st_o).sum_results()
+    b = Str1_0_0('^GSPC', s2, stime='2019-05-01', ftime='2020-06-01', interval='1d', str_opt=st_o).sum_results()
+    c = Str1_0_0('^GSPC', s3, stime='2019-10-01', ftime='2021-01-01', interval='1d', str_opt=st_o).sum_results()
+    d = Str1_0_0('^GSPC', s4, stime='2020-05-01', ftime='2021-10-01', interval='1d', str_opt=st_o).sum_results()
+    e = Str1_0_0('^GSPC', s5, stime='2021-06-01', ftime='2022-04-03', interval='1d', str_opt=st_o).sum_results()
+    f = Str1_0_0('^GSPC', s6, stime='2022-01-01', interval='1d', str_opt=st_o).sum_results()
 
     return a, b, c, d, e, f, st_o
 
@@ -89,7 +89,7 @@ from strategies.str_options_4column import p1_mr, p2_mr, p3_mr, p4_mr, p5_mr, p6
 
 
 # Db_str_tests().insert_line_data(for_test(snp_b_15, mrAM_MmrB15_a_mrAM1_a_mrBL05))
-Db_str_tests().insert_pack_data(pack_analyse(coin_list, p4_lr))
+Db_str_tests().insert_pack_data(pack_analyse(snp_b_15, p3_mr))
 # Db_str_tests().del_all()
 # Db_str_tests().create_table()
 # Db_str_tests().get_full_table()

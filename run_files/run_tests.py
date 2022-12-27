@@ -89,7 +89,7 @@ from strategies.str_options_4column import p1_mr, p2_mr, p3_mr, p4_mr, p5_mr, p6
 
 
 # Db_str_tests().insert_line_data(for_test(snp_b_15, mrAM_MmrB15_a_mrAM1_a_mrBL05))
-Db_str_tests().insert_pack_data(pack_analyse(snp_b_15, p3_mr))
+Db_str_tests().insert_pack_data(pack_analyse(snp_b_15, p4_mr))
 # Db_str_tests().del_all()
 # Db_str_tests().create_table()
 # Db_str_tests().get_full_table()

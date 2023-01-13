@@ -1,12 +1,18 @@
-from yahoo_fin.stock_info import get_data, get_income_statement
-import yahoo_fin.stock_info as si
+import yfinance as yf
 import pandas as pd
+import numpy as np
+
+pd.set_option('display.max_rows', 1000)
+pd.set_option('display.max_columns', 500)
+pd.set_option('display.width', 1000)
 
 
-income_statement = si.get_income_statement("aapl")
-print(income_statement)
+tick = "MSFT"
+ticker = yf.Ticker(tick)
+
+column1 = 'Total Assets'
 
 
+df = ticker.balance_sheet.T
 
-# https://finance.yahoo.com/quote/aapl/financials?p=aapl
-#             ""
+print(df)

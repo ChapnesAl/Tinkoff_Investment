@@ -74,4 +74,4 @@ if __name__ == '__main__':
     # print(df_filt3)
     # print(y)
     # print(df.tail(30))
-    print(green_energy_list)
+    print(it_list)

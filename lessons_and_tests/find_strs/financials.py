@@ -10,7 +10,7 @@ pd.set_option('display.width', 1000)
 
 from pandas_datareader import data as pdr
 
-
+import tinkoff
 
 
 

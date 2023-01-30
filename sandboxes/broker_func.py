@@ -3,6 +3,7 @@ from tinkoff.invest.services import SandboxService
 import tokens
 
 
+
 def get_all_accounts():
     print('Песочница Тинькоф')
 

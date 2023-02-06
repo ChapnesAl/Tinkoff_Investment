@@ -80,7 +80,7 @@ def my_operations():
 
 
 if __name__ == '__main__':
-    print(from_figi_to_ticker('BBG0013HGFT4'))
+    print(from_figi_to_ticker('BBG006L8G4H1'))
 
 
 

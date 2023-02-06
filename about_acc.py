@@ -76,7 +76,7 @@ def cast_money(v):
 """
 
 # MyAcc.full_assets(MyAcc)
+if __name__ == '__main__':
+    general_assets()
+    # full_assets()
 
-general_assets()
-
-# f = {MoneyValue(currency='rub', units=0, nano=0), MoneyValue(currency='rub', units=-102085, nano=-20000000)}

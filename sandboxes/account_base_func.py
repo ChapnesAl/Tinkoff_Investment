@@ -1,7 +1,6 @@
 from tinkoff.invest import Client, MoneyValue, PortfolioPosition
 from tinkoff.invest.services import SandboxService
 import tokens
-import acc_id
 import pandas as pd
 
 pd.set_option('display.max_rows', 1000)

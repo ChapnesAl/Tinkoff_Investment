@@ -1,15 +1,21 @@
 from datetime import datetime
 
-from tokens import test_token, id_test
-from tinkoff.invest import Client, InstrumentStatus, InstrumentIdType, OperationState, RequestError
+import tokens
+from tinkoff.invest import Client, InstrumentStatus, InstrumentIdType, OperationState, RequestError, GetAccountsRequest
 import pandas as pd
 from pprint import pprint
+
+
+def get_acc_id():
+    with Client(tokens.all_token_full()) as client:
+        r = client.users.get_accounts()
+        return r
 
 
 
 
 def from_ticker_to_figi(ticker, class_code):
-    with Client(test_token()) as client:
+    with Client(tokens.test_token()) as client:
         a = client.instruments.get_instrument_by(id=ticker, id_type=InstrumentIdType.INSTRUMENT_ID_TYPE_TICKER,
                                                  class_code=class_code)
         b = getattr(getattr(a, 'instrument'), 'figi')
@@ -17,18 +23,18 @@ def from_ticker_to_figi(ticker, class_code):
 
 
 def from_figi_to_ticker(figi):
-    with Client(test_token()) as client:
+    with Client(tokens.test_token()) as client:
         a = client.instruments.get_instrument_by(id_type=InstrumentIdType.INSTRUMENT_ID_TYPE_FIGI, id=figi)
         b = getattr(getattr(a, 'instrument'), 'ticker')
         return b
 
 def about_futures():
-    with Client(test_token()) as client:
+    with Client(tokens.test_token()) as client:
         a = client.instruments.futures(instrument_status=InstrumentStatus.INSTRUMENT_STATUS_BASE)
         return a
 
 def get_time_of_market():
-    with Client(test_token()) as client:
+    with Client(tokens.test_token()) as client:
         a = client.instruments.trading_schedules(
             # exchange=
             from_=datetime.utcnow(),
@@ -38,9 +44,9 @@ def get_time_of_market():
 
 def my_operations():
     try:
-        with Client(test_token()) as client:
+        with Client(tokens.test_token()) as client:
             a = client.operations.get_operations(
-                account_id=id_test(),
+                account_id=tokens.id_test(),
                 from_=datetime(2021, 1, 1),
                 to=datetime.utcnow()
                 # figi='BBB'
@@ -80,7 +86,8 @@ def my_operations():
 
 
 if __name__ == '__main__':
-    print(from_figi_to_ticker('BBG006L8G4H1'))
+    # print(from_figi_to_ticker('BBG006L8G4H1'))
+    print(get_acc_id())
 
 
 

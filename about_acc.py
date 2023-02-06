@@ -1,6 +1,7 @@
 from tinkoff.invest import Client, PortfolioResponse, RequestError, PortfolioPosition
 import pandas as pd
 import tokens
+from dif_func.extra_func import from_figi_to_ticker
 
 pd.set_option('display.max_rows', 1000)
 pd.set_option('display.max_columns', 500)
@@ -16,8 +17,8 @@ def full_assets():
 
 def general_assets():
     try:
-        with Client(tokens.test_token()) as client:
-            a = client.operations.get_portfolio(account_id=tokens.id_test())
+        with Client(tokens.all_token_full()) as client:
+            a = client.operations.get_portfolio(account_id=tokens.id_iss())
             # keys = ['total_amount_shares', 'total_amount_bonds', 'total_amount_etf', 'total_amount_currencies', 'total_amount_futures']
             # # print({getattr(a, k) for k in keys})
             # print(getattr(a, 'total_amount_shares'))
@@ -49,7 +50,7 @@ def general_assets():
 
 def portfolio_pose_todict(p: PortfolioPosition):
     r = {
-        'figi': p.figi,
+        'figi': from_figi_to_ticker(p.figi),
         'quantity': cast_money(p.quantity),
         'expected_yield': cast_money(p.expected_yield),
         'instrument_type': p.instrument_type,

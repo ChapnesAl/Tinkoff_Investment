@@ -15,10 +15,10 @@ def full_assets():
         print(a)
 
 
-def general_assets():
+def general_assets(id=tokens.id_iss()):
     try:
         with Client(tokens.all_token_full()) as client:
-            a = client.operations.get_portfolio(account_id=tokens.id_iss())
+            a = client.operations.get_portfolio(account_id=id)
             # keys = ['total_amount_shares', 'total_amount_bonds', 'total_amount_etf', 'total_amount_currencies', 'total_amount_futures']
             # # print({getattr(a, k) for k in keys})
             # print(getattr(a, 'total_amount_shares'))
@@ -39,14 +39,15 @@ def general_assets():
             # } for p in a.positions])
             # print(df.head(100))
             df = pd.DataFrame([portfolio_pose_todict(p) for p in a.positions])
-            print(df.head(100))
-            print(cast_money(a.total_amount_bonds), df.query("instrument_type == 'bond'")['sell_sum'].sum())
-            print(round(df['commission'], 3).sum())
+            # print(df.head(100))
+            # print(cast_money(a.total_amount_bonds), df.query("instrument_type == 'bond'")['sell_sum'].sum())
+            # print(round(df['commission'], 3).sum())
             # print(df['commission'].sum())
 
     except RequestError as e:
         print(str(e))
 
+    return df
 
 def portfolio_pose_todict(p: PortfolioPosition):
     r = {
@@ -76,8 +77,29 @@ def cast_money(v):
 
 """
 
-# MyAcc.full_assets(MyAcc)
+def all_acc_assets():
+    all_acc = [tokens.id_test(), tokens.id_broker(), tokens.id_iss()]
+    for i in range(len(all_acc)):
+        if i == 0:
+            r = general_assets(all_acc[i])
+        else:
+            r = pd.concat([r, general_assets(all_acc[i])], ignore_index=True)
+    return r
+
+
+
+def get_portfolio_usd_tickers():
+    df = all_acc_assets()
+    df_filt = df.loc[(df['instrument_type'] == 'share') & (df['currency'] == 'usd')]
+    return df_filt['figi'].to_list()
+
+
 if __name__ == '__main__':
-    general_assets()
-    # full_assets()
+    # print(general_assets())
+    # print(all_acc_assets())
+    print(get_portfolio_usd_tickers())
+
+    # all_a
+
+
 

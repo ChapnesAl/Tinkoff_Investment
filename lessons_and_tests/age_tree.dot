@@ -1,0 +1,29 @@
+digraph Tree {
+node [shape=box, style="filled", color="black", fontname="helvetica"] ;
+edge [fontname="helvetica"] ;
+0 [label="change % debtToAssets <= -1.717\ngini = 0.287\nsamples = 23\nvalue = [4, 19]", fillcolor="#63b2ea"] ;
+1 [label="gini = 0.0\nsamples = 7\nvalue = [0, 7]", fillcolor="#399de5"] ;
+0 -> 1 [labeldistance=2.5, labelangle=45, headlabel="True"] ;
+2 [label="change % debtToAssets <= 0.952\ngini = 0.375\nsamples = 16\nvalue = [4, 12]", fillcolor="#7bbeee"] ;
+0 -> 2 [labeldistance=2.5, labelangle=-45, headlabel="False"] ;
+3 [label="gini = 0.0\nsamples = 2\nvalue = [2, 0]", fillcolor="#e58139"] ;
+2 -> 3 ;
+4 [label="change % debtToAssets <= 9.383\ngini = 0.245\nsamples = 14\nvalue = [2, 12]", fillcolor="#5aade9"] ;
+2 -> 4 ;
+5 [label="gini = 0.0\nsamples = 8\nvalue = [0, 8]", fillcolor="#399de5"] ;
+4 -> 5 ;
+6 [label="change % debtToAssets <= 16.109\ngini = 0.444\nsamples = 6\nvalue = [2, 4]", fillcolor="#9ccef2"] ;
+4 -> 6 ;
+7 [label="change % debtToAssets <= 9.901\ngini = 0.444\nsamples = 3\nvalue = [2, 1]", fillcolor="#f2c09c"] ;
+6 -> 7 ;
+8 [label="gini = 0.0\nsamples = 1\nvalue = [1, 0]", fillcolor="#e58139"] ;
+7 -> 8 ;
+9 [label="change % debtToAssets <= 11.762\ngini = 0.5\nsamples = 2\nvalue = [1, 1]", fillcolor="#ffffff"] ;
+7 -> 9 ;
+10 [label="gini = 0.0\nsamples = 1\nvalue = [0, 1]", fillcolor="#399de5"] ;
+9 -> 10 ;
+11 [label="gini = 0.0\nsamples = 1\nvalue = [1, 0]", fillcolor="#e58139"] ;
+9 -> 11 ;
+12 [label="gini = 0.0\nsamples = 3\nvalue = [0, 3]", fillcolor="#399de5"] ;
+6 -> 12 ;
+}
